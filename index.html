@@ -1,13 +1,84 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  
+        const closePopup = document.querySelector('#close-popup');
+        const popup = document.querySelector('#popup');
+        const information = document.querySelector('#information');
+        
+        //   if (lesson1) lesson1.addEventListener('click', function(e) {
+        //     console.log('Clicking lesson 1.')
+        //     if (canOpenLesson) {
+        //       // document.getElementById('lesson1-link').click();
+        //       window.location.href = '/lesson1.html';
+        //     }
+        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
+        //   })
+        //   if (lesson2) lesson2.addEventListener('click', function(e) { 
+        //     if (canOpenLesson) {
+        //       // document.getElementById('lesson2-link').click();
+        //       window.location.href = '/lesson2.html';
+        //     }
+        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
+        //   })
+        //   if (lesson3) lesson3.addEventListener('click', function(e) { 
+        //     if (canOpenLesson) {
+        //       // document.getElementById('lesson3-link').click();
+        //       window.location.href = '/lesson3.html';
+        //     }
+        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
+        //   })
+        //   if (lesson4) lesson4.addEventListener('click', function(e) { 
+        //     if (canOpenLesson) {
+        //       // document.getElementById('lesson4-link').click();
+        //       window.location.href = '/lesson4.html';
+        //     }
+        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
+        //   })
+        
+        if (information) information.addEventListener('click', function (e) {
+        popup.setAttribute('scale', '1 1 1');
+        })
+        
+        if (closePopup) closePopup.addEventListener('click', function (e) {
+        popup.setAttribute('scale', '0 0 0');
+        })
+        
+        });
+    </script>
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <assets>
+        <img id="popup-content" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2FLesson2%20Info.png?v=1589078946468" crossorigin="anonymous">
+        <img id="close" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2Fclose.png?v=1587358509638" crossorigin="anonymous">
+        <img id="info-icon" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2Finfo.png?v=1588193825592" crossorigin="anonymous">
+      </assets>
+
+      <a-entity id="cameraRig" wasd-controls look-controls="pointerLockEnabled: false">
+        <a-entity id="head"
+          camera="near:0.01;"
+          look-controls="pointerLockEnabled: false"
+          position="0 1.65 0">
+          <a-cursor position="0 0 -0.5"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: black; shader: flat"
+            cursor="rayOrigin: mouse">
+          </a-cursor>
+        </a-entity>
+      </a-entity>
+
+      <a-box position="0 0.5 -4" rotation="0 0 0" color="#4CC3D9">
+        <a-image id="information" src="#info-icon" color="None" position="0 2 1" scale="0.6 0.6 1" material="" geometry=""></a-image>
+        <a-entity id="popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 2 1.5" >
+                <a-image id="pop" src="#popup-content" color="None" height="1.5" width="2.3" material="" geometry=""></a-image>
+                <a-image id="close-popup" position="1 0.604 0.01" scale="0.5 0.5 0.5" src="#close" color="None" width="0.2" height="0.2" material="" geometry="">
+                </a-image>
+        </a-entity></a-box>
+      
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4">></a-plane>
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
