@@ -3,7 +3,7 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Museo NFT</title>
+      <title>Recepcion</title>
       <meta property="og:title" content="Public Sector Reception" />
       <meta name="description" content="Public Sector Reception">
       <meta name="author" content="Santiago Botero">
@@ -12,20 +12,29 @@
         if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
       </script>
 
+      
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var includes = $('[data-include]')
-            $.each(includes, function () {
-                var file = 'builder/' + $(this).data('include') + '.html'
-                $(this).load(file)
-            })
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+    
+          const cerrar_centro_informacion = document.querySelector('#cerrar_centro_informacion');
+          const centro_informacion_popup = document.querySelector('#centro_informacion_popup');
+          const centro_informacion_totem = document.querySelector('#centro_informacion_totem');
+          
+          
+          if (centro_informacion_totem) centro_informacion_totem.addEventListener('click', function (e) {
+          centro_informacion_popup.setAttribute('scale', '1 1 1');
+          })
+          
+          if (cerrar_centro_informacion) cerrar_centro_informacion.addEventListener('click', function (e) {
+          centro_informacion_popup.setAttribute('scale', '0 0 0');
+          })
+          
+          });
       </script>
     
       <!-- the AFrame library and 3rd party components -->
       <!-- libreria de enviorments y aframe -->
-         }
-         {}     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe/dist/aframe-master.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe/dist/aframe-master.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
       <!-- librerias para phisycs y que todo funcione -->
        <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
@@ -91,6 +100,14 @@
           <img id="marmol-negro-src" src="assets/marmol-negro.jpg" />
           <img id="sofa-src" src="assets/sofas.png" />
           <img id="asensores" src="assets/asesnsores.png" />
+          <img id="escudo-colombia" src="assets/escudo-colombia.png" />
+          <img id="centro_informacion_popup_mensaje" src="assets/centro-informacion-mensaje.png" >
+          <img id="boton-continuar" src="assets/boton-continuar.png" >
+          <img id="boton-cerrar" src="assets/boton-cerrar.png" >
+          <img id="poster-covid" src="assets/covid-poster.png" >
+          <img id="poster-frontera" src="assets/frontera-poster.png" >
+
+          <a-video id="video-pantalla" src="assets/video-test.mp4" width="16" height="9"></a-video>
 
           <a-gltf-model id="silla-espera" shadow="receive:true;cast:true;" src="assets/sillas-espera.glb"></a-gltf-model>
           <a-mixin id="sillas-espera" gltf-model="#silla-espera"></a-mixin>
@@ -98,13 +115,19 @@
           <a-gltf-model id="maquina-expendedoras" shadow="receive:true;cast:true;" src="assets/maquinas-expendedoras.glb"></a-gltf-model>
           <a-mixin id="maquinas-expendedoras" gltf-model="#maquina-expendedoras"></a-mixin>
 
+          <a-gltf-model id="recepcion-escritorio" shadow="receive:true;cast:true;" src="assets/recepcion-escritorio.glb"></a-gltf-model>
+          <a-mixin id="escritorio-recepcion" gltf-model="#recepcion-escritorio"></a-mixin>
+
 
 
           <a-mixin id="banca" geometry="primitive: box; width:1;height:1.6;depth:3"  ></a-mixin>
+          <a-mixin id="totem-base" geometry="primitive: box; width:0.5;height:3.5;depth:0.5"  ></a-mixin>
+          <a-mixin id="totem-pantalla" geometry="primitive: box; width:0.8;height:0.6;depth:0.05"  material="src: #escudo-colombia"></a-mixin>
           <a-mixin id="marmol-negro" material="src: #marmol-negro-src"></a-mixin>
           <a-mixin id="sofa" material="src: #sofa-src"></a-mixin>
-    
-            
+          <a-mixin id="pantalla"  geometry="primitive: box; width: 4.5; height: 3.5; depth: 0.01;" material="src: #video-pantalla"></a-mixin>
+          <a-mixin id="border-pantalla" geometry="primitive: box; width: 4.6; height: 3.6; depth: 0.01;" material="color: black" ></a-mixin>
+        
         </a-assets>
         <!-- Luz-->
         <a-light id="dirlight" intensity="2" light="castShadow:false;type:hemisphere" position="0 -6 0"></a-light>
@@ -115,7 +138,7 @@
         <a-entity id="cameraRig"
           simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
           movement-controls="speed:0.5;camera:#head;"
-          position="0 0.8 3" rotation="0 0 0" >
+          position="0 0.8 19" rotation="0 0 0" >
           <a-entity id="head"
             camera="near:0.01;"
             look-controls="pointerLockEnabled: false"
@@ -227,24 +250,38 @@
            height="8"
            src="#puerta"
            ></a-plane>
+           <a-plane id="poster-derecha"
+           rotation="0 180 0"
+           position="12 4 19.9"
+           width="6"
+           height="6"
+           src="#poster-covid"
+           ></a-plane>
+           <a-plane id="poster-izquierdo"
+           rotation="0 180 0"
+           position="-12 4 19.9"
+           width="6"
+           height="6"
+           src="#poster-frontera"
+           ></a-plane>
 
            
            <a-plane id="pared-derecha"
-           rotation="-180 90 180"
+           rotation="0 -90 0"
            position="20 6 0"
            width="40"
            height="40"
            src="#pared"
            ></a-plane>
            <a-plane id="ventana-1-derecha"
-           rotation="-180 90 180"
+           rotation="0 -90 0"
            position="19.9 4 10"
            width="6"
            height="6"
            src="#ventana-recepcion"
            ></a-plane>
            <a-plane id="ventana-2-derecha"
-           rotation="-180 90 180"
+           rotation="0 -90 0"
            position="19.9 4 -10"
            width="6"
            height="6"
@@ -272,69 +309,92 @@
            height="6"
            src="#ventana-recepcion"
            ></a-plane>
-    
-            <a-entity mixin="sillas-espera" position="0 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="5 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
 
-            <a-entity mixin="sillas-espera" position="0 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="5 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            
-            <a-entity mixin="sillas-espera" position="0 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="5 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-
-            <a-entity mixin="sillas-espera" position="0 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="5 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-
-            <a-entity mixin="sillas-espera" position="-7 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="-12 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-
-            <a-entity mixin="sillas-espera" position="-7 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="-12 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            
-            <a-entity mixin="sillas-espera" position="-7 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="-12 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-
-            <a-entity mixin="sillas-espera" position="-7 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-            <a-entity mixin="sillas-espera" position="-12 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-
-            <a-entity mixin="maquinas-expendedoras" position="0 1 0"  scale="10 10 10" rotation="0 0 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
-        
+           <a-entity id="totem" position="0 0 15">
+                <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
+                <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
+                <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
+                <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
+                    <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                    <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="#"></a-image>
+                    <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+                </a-entity>
+           </a-entity>
+           <a-entity id="pantalla-izquierda" position="-19.9 4 0" rotation="0 90 0">
+                <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
+                <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+           </a-entity>
+           <a-entity id="pantalla-derecha" position="19.9 4 0" rotation="0 -90 0">
+                <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
+                <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+           </a-entity>
            
-          
+           <a-entity id="sillas-de-espera" position="0 0 0">
+                <a-entity mixin="sillas-espera" position="0 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="5 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+
+                <a-entity mixin="sillas-espera" position="0 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="5 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                
+                <a-entity mixin="sillas-espera" position="0 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="5 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+
+                <a-entity mixin="sillas-espera" position="0 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="5 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+
+                <a-entity mixin="sillas-espera" position="-7 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="-12 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+
+                <a-entity mixin="sillas-espera" position="-7 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="-12 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                
+                <a-entity mixin="sillas-espera" position="-7 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="-12 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+
+                <a-entity mixin="sillas-espera" position="-7 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity mixin="sillas-espera" position="-12 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+           </a-entity>
+           
+
+            <a-entity mixin="escritorio-recepcion" position="0 1.6 -15" scale="0.06 0.06 0.06" rotation="0 0 0">
+                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+            </a-entity>
+    
+            
+
+            
         </a-entity>
       
         <!-- perimetro navmesh -->
