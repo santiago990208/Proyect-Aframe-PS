@@ -3,7 +3,7 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Recepcion</title>
+      <title>Public Sector POC Recepcion</title>
       <meta property="og:title" content="Public Sector Reception" />
       <meta name="description" content="Public Sector Reception">
       <meta name="author" content="Santiago Botero">
@@ -12,7 +12,6 @@
         if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
       </script>
 
-      
       <script>
         document.addEventListener('DOMContentLoaded', function() {
     
@@ -45,7 +44,7 @@
     
       <!-- the AFrame library and 3rd party components -->
       <!-- libreria de enviorments y aframe -->
-        <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe/dist/aframe-master.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe/dist/aframe-master.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
       <!-- librerias para phisycs y que todo funcione -->
        <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
@@ -58,16 +57,9 @@
       <script src="https://cdn.jsdelivr.net/npm/handy-work/build/magnet-helpers.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/aframe-htmlmesh/build/aframe-html.min.js"></script>
       <script src="js/simple-navmesh-constraint.js"></script>
-      <!-- maybe puede quitarse -->
       <script src="js/model-utils.js"></script>
-
-      <!-- Our custom behaviour -->
       <script src="js/main.js"></script>
 
-      <!-- <script src="js/info-message.js"></script>
-      <script src="js/highlight.js"></script>
-      <script src="js/info-panel.js"></script> -->
-      <!-- clicks -->
       <script>
         AFRAME.registerComponent("link-click", {
           init: function() {
@@ -247,7 +239,7 @@
            width="6"
            height="7"
            src="#asensores"
-           link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
+            link-click="href: /Proyect-Aframe-PS/piso_2.html"
            ></a-plane>
            <a-plane id="asensor-2"
            rotation="-180 180 180"
@@ -255,7 +247,7 @@
            width="6"
            height="7"
            src="#asensores"
-           link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
+            link-click="href: /Proyect-Aframe-PS/piso_2.html"
            ></a-plane>
            
            <a-plane id="pared-sur"
