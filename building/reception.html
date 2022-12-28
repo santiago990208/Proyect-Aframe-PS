@@ -19,6 +19,10 @@
           const cerrar_centro_informacion = document.querySelector('#cerrar_centro_informacion');
           const centro_informacion_popup = document.querySelector('#centro_informacion_popup');
           const centro_informacion_totem = document.querySelector('#centro_informacion_totem');
+
+          const cerrar_centro_informacion_acceso = document.querySelector('#cerrar_centro_informacion_acceso');
+          const centro_informacion_popup_acceso = document.querySelector('#centro_informacion_popup_acceso');
+          const recepcion_informacion = document.querySelector('#recepcion_informacion');
           
           
           if (centro_informacion_totem) centro_informacion_totem.addEventListener('click', function (e) {
@@ -27,6 +31,13 @@
           
           if (cerrar_centro_informacion) cerrar_centro_informacion.addEventListener('click', function (e) {
           centro_informacion_popup.setAttribute('scale', '0 0 0');
+          })
+          if (recepcion_informacion) recepcion_informacion.addEventListener('click', function (e) {
+          centro_informacion_popup_acceso.setAttribute('scale', '1 1 1');
+          })
+          
+          if (cerrar_centro_informacion_acceso) cerrar_centro_informacion_acceso.addEventListener('click', function (e) {
+          centro_informacion_popup_acceso.setAttribute('scale', '0 0 0');
           })
           
           });
@@ -61,7 +72,8 @@
         AFRAME.registerComponent("link-click", {
           init: function() {
             this.el.addEventListener("click", (e) => {
-              window.location = this.data.href;
+                console.log(this.data)
+                window.open(this.data.href, '_blank').focus();
             })
           }
         })
@@ -95,13 +107,14 @@
           <!-- recepcion -->
           <img id="piso" src="assets/piso.png" />
           <img id="pared" src="assets/pared.jpg" />
-          <img id="puerta" src="assets/puerta.png" />
+          <img id="fondo-puerta" src="assets/fondo-puerta.png" />
           <img id="ventana-recepcion" src="assets/ventana-recepcion.png" />
           <img id="marmol-negro-src" src="assets/marmol-negro.jpg" />
           <img id="sofa-src" src="assets/sofas.png" />
           <img id="asensores" src="assets/asesnsores.png" />
           <img id="escudo-colombia" src="assets/escudo-colombia.png" />
           <img id="centro_informacion_popup_mensaje" src="assets/centro-informacion-mensaje.png" >
+          <img id="informacion_acceso_popup_mensaje" src="assets/informacion-acceso-mensaje.png" >
           <img id="boton-continuar" src="assets/boton-continuar.png" >
           <img id="boton-cerrar" src="assets/boton-cerrar.png" >
           <img id="poster-covid" src="assets/covid-poster.png" >
@@ -109,16 +122,23 @@
 
           <a-video id="video-pantalla" src="assets/video-test.mp4" width="16" height="9"></a-video>
 
-          <a-gltf-model id="silla-espera" shadow="receive:true;cast:true;" src="assets/sillas-espera.glb"></a-gltf-model>
-          <a-mixin id="sillas-espera" gltf-model="#silla-espera"></a-mixin>
+          <a-gltf-model id="sillas-espera-glft" shadow="receive:true;cast:true;" src="assets/sillas-espera.glb"></a-gltf-model>
+          <a-mixin id="sillas-espera" gltf-model="#sillas-espera-glft"></a-mixin>
 
-          <a-gltf-model id="maquina-expendedoras" shadow="receive:true;cast:true;" src="assets/maquinas-expendedoras.glb"></a-gltf-model>
-          <a-mixin id="maquinas-expendedoras" gltf-model="#maquina-expendedoras"></a-mixin>
+          <a-gltf-model id="maquinas-expendedoras-glft" shadow="receive:true;cast:true;" src="assets/maquinas-expendedoras.glb"></a-gltf-model>
+          <a-mixin id="maquinas-expendedoras" gltf-model="#maquinas-expendedoras-glft"></a-mixin>
 
-          <a-gltf-model id="recepcion-escritorio" shadow="receive:true;cast:true;" src="assets/recepcion-escritorio.glb"></a-gltf-model>
-          <a-mixin id="escritorio-recepcion" gltf-model="#recepcion-escritorio"></a-mixin>
+          <a-gltf-model id="escritorio-recepcion-glft" shadow="receive:true;cast:true;" src="assets/recepcion-escritorio.glb"></a-gltf-model>
+          <a-mixin id="escritorio-recepcion" gltf-model="#escritorio-recepcion-glft"></a-mixin>
+          
+          <a-gltf-model id="acceso-glft" shadow="receive:true;cast:true;" src="assets/acceso.glb"></a-gltf-model>
+          <a-mixin id="acceso" gltf-model="#acceso-glft"></a-mixin>
 
+          <a-gltf-model id="puerta-entrada-glft" shadow="receive:true;cast:true;" src="assets/puerta.glb"></a-gltf-model>
+          <a-mixin id="puerta-entrada" gltf-model="#puerta-entrada-glft"></a-mixin>
 
+          <a-gltf-model id="punto-informacion-glft" shadow="receive:true;cast:true;" src="assets/punto-informacion.glb"></a-gltf-model>
+          <a-mixin id="punto-informacion" gltf-model="#punto-informacion-glft"></a-mixin>
 
           <a-mixin id="banca" geometry="primitive: box; width:1;height:1.6;depth:3"  ></a-mixin>
           <a-mixin id="totem-base" geometry="primitive: box; width:0.5;height:3.5;depth:0.5"  ></a-mixin>
@@ -227,6 +247,7 @@
            width="6"
            height="7"
            src="#asensores"
+           link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
            ></a-plane>
            <a-plane id="asensor-2"
            rotation="-180 180 180"
@@ -234,6 +255,7 @@
            width="6"
            height="7"
            src="#asensores"
+           link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
            ></a-plane>
            
            <a-plane id="pared-sur"
@@ -243,13 +265,18 @@
            height="40"
            src="#pared"
            ></a-plane>
-           <a-plane id="puerta-sur"
+           <a-entity mixin="puerta-entrada" position="0 4 19.9" rotation="0 -90 0" scale="5 5 4">
+            <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+           </a-entity>
+          
+            <a-plane id="puerta-sur"
            rotation="0 180 0"
            position="0 4 19.9"
-           width="8"
-           height="8"
-           src="#puerta"
+           width="6"
+           height="9"
+           src="#fondo-puerta"
            ></a-plane>
+            
            <a-plane id="poster-derecha"
            rotation="0 180 0"
            position="12 4 19.9"
@@ -316,7 +343,7 @@
                 <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
                 <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
                     <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
-                    <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="#"></a-image>
+                    <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
                     <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
                 </a-entity>
            </a-entity>
@@ -327,6 +354,10 @@
            <a-entity id="pantalla-derecha" position="19.9 4 0" rotation="0 -90 0">
                 <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
                 <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+           </a-entity>
+           <a-entity id="pantalla-frontal" rotation="-180 180 180" position="0 6 -19.9">
+                <a-entity mixin="pantalla" scale="2 2 0" position="0 0 0.1" ></a-entity>
+                <a-entity mixin="border-pantalla" scale="2 2 0" position="0 0 0"></a-entity>
            </a-entity>
            
            <a-entity id="sillas-de-espera" position="0 0 0">
@@ -388,9 +419,17 @@
            </a-entity>
            
 
-            <a-entity mixin="escritorio-recepcion" position="0 1.6 -15" scale="0.06 0.06 0.06" rotation="0 0 0">
-                <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
-            </a-entity>
+            <a-entity id="recepcion_informacion" position="0 0 -15">
+                <a-entity mixin="escritorio-recepcion" position="0 1.6 0" scale="0.06 0.06 0.06" rotation="0 0 0">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity id="icono_centro_informacio" mixin="acceso" position="0 3.2 0" scale="1 1 1" rotation="0 90 0">
+                <a-entity id="centro_informacion_popup_acceso" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="-1 0 0" rotation="0 -90 0">
+                    <a-image id="mensaje_acceso" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                    <a-image id="continuar_acceso"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
+                    <a-image id="cerrar_centro_informacion_acceso" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+                </a-entity>
+           </a-entity>
     
             
 
