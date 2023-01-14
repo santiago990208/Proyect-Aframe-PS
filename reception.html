@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Recepcion</title>
+        <meta property="og:title" content="Public Sector Reception" />
+        <meta name="description" content="Public Sector Reception">
+        <meta name="author" content="Santiago Botero">
+
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <!-- librerias para phisycs y que todo funcione -->
+         <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
+        <script src="assets/js/physics-simulator.js"></script>
+        <script src="assets/js/pop-up-recepcion.js"></script>
+        <script>
+        // WebXR requires https: to work so ensure redirected if needed.
+        if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
+        </script>
+        <!-- click links redirrection -->
+        <script>
+        AFRAME.registerComponent("link-click", {
+          init: function() {
+            this.el.addEventListener("click", (e) => {
+                console.log(this.data)
+                window.open(this.data.href, '_blank').focus();
+            })
+          }
+        })
+        </script>
+
+    </head>
+    <body>
+        <a-scene reflection="directionalLight:#dirlight;" renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;">
+          <a-assets>
+              <!-- OCOLUS CONTROLS HANDS ASSETS -->
+              <!-- mano derecha eskeleto -->
+              <a-asset-item id="right-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-right-hand-webxr/model.gltf"></a-asset-item>
+              <!-- mano izquierda -->
+              <a-asset-item id="left-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-left-hand-webxr/model.gltf"></a-asset-item>
+              <!-- reloj exit -->
+              <a-asset-item id="watch-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/watch.glb?v=1645016979219"></a-asset-item>
+              <!-- reloj -->
+              <a-asset-item id="clock-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/vintage_grandfather_clock_01_1k-v2.glb?v=1647265174189"></a-asset-item>
+              
+              <a-mixin id="animations" animation__click="property: components.material.material.color; type: color; to: blue; startEvents: click; dur: 500;"></a-mixin>
+              <a-mixin id="blink" blink-controls="rotateOnTeleport:false;cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.navmesh;"></a-mixin>
+              <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
+      
+              <!-- Textures -->
+              <img id="texturapiso" src="assets/images/textures/piso.png"  crossorigin="anonymous"/>
+              <img id="texturapared" src="assets/images/textures/pared.jpg"  crossorigin="anonymous"/>
+              <img id="texturatecho" src="assets/images/textures/techo.png"  crossorigin="anonymous"/>
+              <img id="fondo-puerta" src="assets/images/textures/fondo-puerta.png"  crossorigin="anonymous"/>
+              <img id="ventana-recepcion" src="assets/images/textures/ventana-recepcion.png"  crossorigin="anonymous"/>
+              <img id="marmol-negro-src" src="assets/images/textures/marmol-negro.jpg" />
+              <img id="sofa-src" src="assets/images/textures/sofas.png"  crossorigin="anonymous"/>
+              <img id="asensores" src="assets/images/textures/asesnsores.png"  crossorigin="anonymous"/>
+              <!-- UI -->
+              <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
+              <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
+              <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <!-- information images -->
+              <img id="centro_informacion_popup_mensaje" src="assets/images/information/centro-informacion-mensaje.png"  crossorigin="anonymous">
+              <img id="informacion_acceso_popup_mensaje" src="assets/images/information/informacion-acceso-mensaje.png"  crossorigin="anonymous">
+              <img id="poster-covid" src="assets/images/information/covid-poster.png"  crossorigin="anonymous">
+              <img id="poster-frontera" src="assets/images/information/frontera-poster.png"  crossorigin="anonymous">
+
+              <!-- Videos -->
+              <a-video id="video-pantalla" src="assets/videos/video-test.mp4" width="16" height="9" crossorigin="anonymous"></a-video>
+
+              <!-- Sillas de espera -->
+              <a-gltf-model id="sillas-espera-glft" shadow="receive:true;cast:true;" src="assets/objects/sillas-espera.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="sillas-espera" gltf-model="#sillas-espera-glft"></a-mixin>
+
+              <a-gltf-model id="maquinas-expendedoras-glft" shadow="receive:true;cast:true;" src="assets/objects/maquinas-expendedoras.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="maquinas-expendedoras" gltf-model="#maquinas-expendedoras-glft"></a-mixin>
+
+              <a-gltf-model id="escritorio-recepcion-glft" shadow="receive:true;cast:true;" src="assets/objects/recepcion-escritorio.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="escritorio-recepcion" gltf-model="#escritorio-recepcion-glft"></a-mixin>
+              
+              <a-gltf-model id="acceso-glft" shadow="receive:true;cast:true;" src="assets/objects/acceso.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="acceso" gltf-model="#acceso-glft"></a-mixin>
+
+              <a-gltf-model id="puerta-entrada-glft" shadow="receive:true;cast:true;" src="assets/objects/puerta.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="puerta-entrada" gltf-model="#puerta-entrada-glft"></a-mixin>
+
+              <a-gltf-model id="punto-informacion-glft" shadow="receive:true;cast:true;" src="assets/objects/punto-informacion.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="punto-informacion" gltf-model="#punto-informacion-glft"></a-mixin>
+
+              <a-mixin id="banca" geometry="primitive: box; width:1;height:1.6;depth:3"  ></a-mixin>
+              <a-mixin id="totem-base" geometry="primitive: box; width:0.5;height:3.5;depth:0.5"  ></a-mixin>
+              <a-mixin id="totem-pantalla" geometry="primitive: box; width:0.8;height:0.6;depth:0.05"  material="src: #escudo-colombia"></a-mixin>
+              <a-mixin id="marmol-negro" material="src: #marmol-negro-src"></a-mixin>
+              <a-mixin id="sofa" material="src: #sofa-src"></a-mixin>
+              <a-mixin id="pantalla"  geometry="primitive: box; width: 4.5; height: 3.5; depth: 0.01;" material="src: #video-pantalla"></a-mixin>
+              <a-mixin id="border-pantalla" geometry="primitive: box; width: 4.6; height: 3.6; depth: 0.01;" material="color: black" ></a-mixin>
+          
+          </a-assets>
+          <!-- Luz-->
+          <a-light id="dirlight" intensity="2" light="castShadow:false;type:hemisphere" position="0 -6 0"></a-light>
+          <!-- Camera -->
+          <a-entity id="cameraRig"
+            wasd-controls
+            look-controls="pointerLockEnabled: false"
+            simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
+            movement-controls="speed:0.5;camera:#head;"
+            position="0 0.8 19" rotation="0 0 0" >
+            <a-entity id="head"
+              camera="near:0.01;"
+              position="0 1.65 0">
+              <a-cursor position="0 0 -0.5"
+                geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
+                material="opacity: 0.6; shader: flat" 
+                cursor="rayOrigin: mouse">
+              </a-cursor>
+            </a-entity>
+          </a-entity>
+          
+          <!-- Hand tracking -->
+          <a-entity handy-controls="right:#right-gltf;materialOverride:right;" material="color:gold;metalness:1;roughness:0;">
+            <!-- Boton oara salir de VR -->
+            <a-gltf-model src="#watch-gltf" data-left="wrist" position="-1000 0 0">
+              <a-sphere radius="0.02" position="0 0.02 0" sphere-collider="radius:0.02;objects:[data-right$=-tip];" exit-on="hitend" visible="false"></a-sphere>
+            </a-gltf-model>
+            <!-- Add a golden ring on the finger -->
+            <a-entity data-left="ring-finger-phalanx-proximal">
+              <a-torus position="0 0 -0.03" radius="0.008" radius-tubular="0.001" scale="1 1 1.5" material="color:gold;metalness:1;roughness:0;"></a-torus>
+            </a-entity>
+            <!-- Usar los dedos para teleportacion -->
+            <a-entity data-right="index-finger-tip" mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <a-entity data-left="index-finger-tip"  mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <!-- The direction hands are facing, we will also attach labels to show the currently detected pose or controller button -->
+            <!-- These also do teleportaion for Blink controls in VR -->
+            <a-entity data-right="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <a-entity data-left="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <!-- These get drawn towards grabable objects, moving the whole hand and the attached elements-->
+            <a-entity id="left-magnet" data-left="grip"  data-magnet="magnet-left"  grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#left-no-magnet;"></a-entity>
+            <a-entity id="right-magnet" data-right="grip" data-magnet="magnet-right" grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#right-no-magnet;"></a-entity>
+            <!-- markers to let us know the real location of the hands, you probably want to make them visible="false" or just make them empty <a-entities> -->
+            <a-entity id="left-no-magnet" data-left="grip" data-no-magnet>
+              <a-entity html="#my-interface" position="-0.142 -0.0166 -0.02928" rotation="-80 90 0" scale="0.7 0.7 0.7"></a-entity>
+            </a-entity>
+            <a-entity id="right-no-magnet" data-right="grip" data-no-magnet></a-entity>
+            <!-- Invisible objects at the tips of each finger for physics or intersections -->
+            <a-sphere data-right="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+          </a-entity>
+
+          <!-- Recepcion -->
+          <a-entity id="estructura" position="0 0 0">
+            <a-plane id="piso"
+            class="navmesh"
+            rotation="-90 0 0"
+            position="0 0 0"
+            width="39.5"
+            height="39.5"
+            repeat="5 5"
+            src="#texturapiso"
+            ></a-plane>
+        
+            <a-plane id="techo"
+            rotation="90 0 0"
+            position="0 20 0"
+            width="40"
+            height="40"
+            src="#texturatecho"
+            repeat="2 2"
+            shadow
+            ></a-plane>
+        
+            <a-plane id="pared-norte"
+            rotation="-180 180 180"
+            position="0 6 -20"
+            width="40"
+            height="40"
+            src="#texturapared"
+            ></a-plane>
+            <a-plane id="asensor-1"
+            rotation="-180 180 180"
+            position="10 3 -19.9"
+            width="6"
+            height="7"
+            src="#asensores"
+            link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
+            ></a-plane>
+            <a-plane id="asensor-2"
+            rotation="-180 180 180"
+            position="-10 3 -19.9"
+            width="6"
+            height="7"
+            src="#asensores"
+            link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"
+            ></a-plane>
+            
+            <a-plane id="pared-sur"
+            rotation="0 180 0"
+            position="0 6 20"
+            width="40"
+            height="40"
+            src="#texturapared"
+            ></a-plane>
+            <a-entity mixin="puerta-entrada" position="0 4 19.9" rotation="0 -90 0" scale="5 5 4" link-click="href: index.html">
+              <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+            </a-entity>
+          
+            <a-plane id="puerta-sur"
+            rotation="0 180 0"
+            position="0 4 19.9"
+            width="6"
+            height="9"
+            src="#fondo-puerta"
+            ></a-plane>
+            
+            <a-plane id="poster-derecha"
+            rotation="0 180 0"
+            position="12 4 19.9"
+            width="6"
+            height="6"
+            src="#poster-covid"
+            ></a-plane>
+            <a-plane id="poster-izquierdo"
+            rotation="0 180 0"
+            position="-12 4 19.9"
+            width="6"
+            height="6"
+            src="#poster-frontera"
+            ></a-plane>
+
+            
+            <a-plane id="pared-derecha"
+            rotation="0 -90 0"
+            position="20 6 0"
+            width="40"
+            height="40"
+            src="#texturapared"
+            ></a-plane>
+            <a-plane id="ventana-1-derecha"
+            rotation="0 -90 0"
+            position="19.9 4 10"
+            width="6"
+            height="6"
+            src="#ventana-recepcion"
+            ></a-plane>
+            <a-plane id="ventana-2-derecha"
+            rotation="0 -90 0"
+            position="19.9 4 -10"
+            width="6"
+            height="6"
+            src="#ventana-recepcion"
+            ></a-plane>
+          
+            <a-plane id="pared-izquierda"
+            rotation="0 90 0"
+            position="-20 6 0"
+            width="40"
+            height="40"
+            src="#texturapared"
+            ></a-plane>
+            <a-plane id="ventana-1-izquierda"
+            rotation="0 90 0"
+            position="-19.9 4 10"
+            width="6"
+            height="6"
+            src="#ventana-recepcion"
+            ></a-plane>
+            <a-plane id="ventana-2-izquierda"
+            rotation="0 90 0"
+            position="-19.9 4 -10"
+            width="6"
+            height="6"
+            src="#ventana-recepcion"
+            ></a-plane>
+
+            <a-entity id="totem" position="0 0 15">
+                  <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
+                  <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
+                  <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
+                  <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
+                      <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                      <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
+                      <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+                  </a-entity>
+            </a-entity>
+            <a-entity id="pantalla-izquierda" position="-19.9 4 0" rotation="0 90 0">
+                  <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+            </a-entity>
+            <a-entity id="pantalla-derecha" position="19.9 4 0" rotation="0 -90 0">
+                  <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+            </a-entity>
+            <a-entity id="pantalla-frontal" rotation="-180 180 180" position="0 6 -19.9">
+                  <a-entity mixin="pantalla" scale="2 2 0" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla" scale="2 2 0" position="0 0 0"></a-entity>
+            </a-entity>
+            
+            <a-entity id="sillas-de-espera" position="0 0 0">
+                  <a-entity mixin="sillas-espera" position="0 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="5 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+
+                  <a-entity mixin="sillas-espera" position="0 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="5 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  
+                  <a-entity mixin="sillas-espera" position="0 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="5 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+
+                  <a-entity mixin="sillas-espera" position="0 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="5 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+
+                  <a-entity mixin="sillas-espera" position="-7 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="-12 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+
+                  <a-entity mixin="sillas-espera" position="-7 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="-12 1 0" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  
+                  <a-entity mixin="sillas-espera" position="-7 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="-12 1 5" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+
+                  <a-entity mixin="sillas-espera" position="-7 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity mixin="sillas-espera" position="-12 1 10" scale="0.4 0.4 0.4" rotation="0 90 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+            </a-entity>
+            
+
+            <a-entity id="recepcion_informacion" position="0 0 -15">
+                  <a-entity mixin="escritorio-recepcion" position="0 1.6 0" scale="0.06 0.06 0.06" rotation="0 0 0">
+                      <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
+                  </a-entity>
+                  <a-entity id="icono_centro_informacio" mixin="acceso" position="0 3.2 0" scale="1 1 1" rotation="0 90 0">
+                  <a-entity id="centro_informacion_popup_acceso" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="-1 0 0" rotation="0 -90 0">
+                      <a-image id="mensaje_acceso" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                      <a-image id="continuar_acceso"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
+                      <a-image id="cerrar_centro_informacion_acceso" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+                  </a-entity>
+            </a-entity>
+
+            </a-entity>
+          </a-entity>
+
+        </a-scene>
+  
+  </body>
+</html>

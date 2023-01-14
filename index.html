@@ -1,86 +1,207 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-  
-        const closePopup = document.querySelector('#close-popup');
-        const popup = document.querySelector('#popup');
-        const information = document.querySelector('#information');
-        
-        //   if (lesson1) lesson1.addEventListener('click', function(e) {
-        //     console.log('Clicking lesson 1.')
-        //     if (canOpenLesson) {
-        //       // document.getElementById('lesson1-link').click();
-        //       window.location.href = '/lesson1.html';
-        //     }
-        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
-        //   })
-        //   if (lesson2) lesson2.addEventListener('click', function(e) { 
-        //     if (canOpenLesson) {
-        //       // document.getElementById('lesson2-link').click();
-        //       window.location.href = '/lesson2.html';
-        //     }
-        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
-        //   })
-        //   if (lesson3) lesson3.addEventListener('click', function(e) { 
-        //     if (canOpenLesson) {
-        //       // document.getElementById('lesson3-link').click();
-        //       window.location.href = '/lesson3.html';
-        //     }
-        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
-        //   })
-        //   if (lesson4) lesson4.addEventListener('click', function(e) { 
-        //     if (canOpenLesson) {
-        //       // document.getElementById('lesson4-link').click();
-        //       window.location.href = '/lesson4.html';
-        //     }
-        //     else document.getElementById('warning').setAttribute('scale', '1 1 1');
-        //   })
-        
-        if (information) information.addEventListener('click', function (e) {
-        popup.setAttribute('scale', '1 1 1');
-        })
-        
-        if (closePopup) closePopup.addEventListener('click', function (e) {
-        popup.setAttribute('scale', '0 0 0');
-        })
-        
-        });
-    </script>
-  </head>
-  <body>
-    <a-scene>
-      <assets>
-        <img id="popup-content" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2FLesson2%20Info.png?v=1589078946468" crossorigin="anonymous">
-        <img id="close" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2Fclose.png?v=1587358509638" crossorigin="anonymous">
-        <img id="info-icon" src="https://cdn.glitch.com/fb7188cb-e0e4-48ae-a567-093a187d6636%2Finfo.png?v=1588193825592" crossorigin="anonymous">
-      </assets>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Public Sector Oracle</title>
+        <meta property="og:title" content="Public Sector" />
+        <meta name="description" content="Public Sector">
+        <meta name="author" content="Santiago Botero">
 
-      <a-entity id="cameraRig" wasd-controls look-controls="pointerLockEnabled: false">
-        <a-entity id="head"
-          camera="near:0.01;"
-          look-controls="pointerLockEnabled: false"
-          position="0 1.65 0">
-          <a-cursor position="0 0 -0.5"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: black; shader: flat"
-            cursor="rayOrigin: mouse">
-          </a-cursor>
-        </a-entity>
-      </a-entity>
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <!-- librerias para phisycs y que todo funcione -->
+         <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
+        <script src="assets/js/physics-simulator.js"></script>
+        <script src="assets/js/pop-up-recepcion.js"></script>
+        <script>
+        // WebXR requires https: to work so ensure redirected if needed.
+        if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
+        </script>
+        <!-- click links redirrection -->
+        <script>
+        AFRAME.registerComponent("link-click", {
+          init: function() {
+            this.el.addEventListener("click", (e) => {
+                console.log(this.data)
+                window.open(this.data.href, '_blank').focus();
+            })
+          }
+        })
+        </script>
 
-      <a-box position="0 0.5 -4" rotation="0 0 0" color="#4CC3D9">
-        <a-image id="information" src="#info-icon" color="None" position="0 2 1" scale="0.6 0.6 1" material="" geometry=""></a-image>
-        <a-entity id="popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 2 1.5" >
-                <a-image id="pop" src="#popup-content" color="None" height="1.5" width="2.3" material="" geometry=""></a-image>
-                <a-image id="close-popup" position="1 0.604 0.01" scale="0.5 0.5 0.5" src="#close" color="None" width="0.2" height="0.2" material="" geometry="">
-                </a-image>
-        </a-entity>
-      </a-box>
+    </head>
+    <body>
+        <a-scene reflection="directionalLight:#dirlight;" renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;">
+          <a-assets>
+              <!-- OCOLUS CONTROLS HANDS ASSETS -->
+              <!-- mano derecha eskeleto -->
+              <a-asset-item id="right-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-right-hand-webxr/model.gltf"></a-asset-item>
+              <!-- mano izquierda -->
+              <a-asset-item id="left-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-left-hand-webxr/model.gltf"></a-asset-item>
+              <!-- reloj exit -->
+              <a-asset-item id="watch-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/watch.glb?v=1645016979219"></a-asset-item>
+              <!-- reloj -->
+              <a-asset-item id="clock-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/vintage_grandfather_clock_01_1k-v2.glb?v=1647265174189"></a-asset-item>
+              
+              <a-mixin id="animations" animation__click="property: components.material.material.color; type: color; to: blue; startEvents: click; dur: 500;"></a-mixin>
+              <a-mixin id="blink" blink-controls="rotateOnTeleport:false;cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.navmesh;"></a-mixin>
+              <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
       
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4">></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
-    </a-scene>
+              <!-- Textures -->
+              <img id="texturapasto" src="assets/images/textures/pasto.jpg"  crossorigin="anonymous"/>
+              <img id="texturacielo" src="assets/images/textures/cielo.jpg"  crossorigin="anonymous"/>
+              <img id="texturatecho-parasol" src="assets/images/textures/techo-parasol.jpg"  crossorigin="anonymous"/>
+              <img id="texturapiso-madera" src="assets/images/textures/piso-madera.jpg"  crossorigin="anonymous"/>
+              <img id="texturapared" src="assets/images/textures/pared.jpg"  crossorigin="anonymous"/>
+              <img id="texturastone" src="assets/images/textures/stone.jpg"  crossorigin="anonymous"/>
+              <!-- UI -->
+              <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
+              <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
+              <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <img id="inside-reception" src="assets/images/textures/inside-reception.png"  crossorigin="anonymous"/>
+              <!-- information images -->
+
+              <!-- objetos -->
+
+              <a-gltf-model id="puerta-entrada-glft" shadow="receive:true;cast:true;" src="assets/objects/puerta.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="puerta-entrada" gltf-model="#puerta-entrada-glft"></a-mixin>
+
+              <a-gltf-model id="tree-glft" shadow="receive:true;cast:true;" src="assets/objects/arbol.glb"  crossorigin="anonymous"></a-gltf-model>
+              
+          
+          </a-assets>
+          <!-- Luz-->
+          <a-light id="dirlight" intensity="2" light="castShadow:false;type:hemisphere" position="0 -6 0"></a-light>
+          <!-- Camera -->
+          <a-entity id="cameraRig"
+            wasd-controls
+            look-controls="pointerLockEnabled: false"
+            simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
+            movement-controls="speed:0.5;camera:#head;"
+            position="0 0.8 30" rotation="0 0 0" >
+            <a-entity id="head"
+              camera="near:0.01;"
+              position="0 1.65 0">
+              <a-cursor position="0 0 -0.5"
+                geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
+                material="opacity: 0.6; shader: flat" 
+                cursor="rayOrigin: mouse">
+              </a-cursor>
+            </a-entity>
+          </a-entity>
+          
+          <!-- Hand tracking -->
+          <a-entity handy-controls="right:#right-gltf;materialOverride:right;" material="color:gold;metalness:1;roughness:0;">
+            <!-- Boton oara salir de VR -->
+            <a-gltf-model src="#watch-gltf" data-left="wrist" position="-1000 0 0">
+              <a-sphere radius="0.02" position="0 0.02 0" sphere-collider="radius:0.02;objects:[data-right$=-tip];" exit-on="hitend" visible="false"></a-sphere>
+            </a-gltf-model>
+            <!-- Add a golden ring on the finger -->
+            <a-entity data-left="ring-finger-phalanx-proximal">
+              <a-torus position="0 0 -0.03" radius="0.008" radius-tubular="0.001" scale="1 1 1.5" material="color:gold;metalness:1;roughness:0;"></a-torus>
+            </a-entity>
+            <!-- Usar los dedos para teleportacion -->
+            <a-entity data-right="index-finger-tip" mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <a-entity data-left="index-finger-tip"  mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <!-- The direction hands are facing, we will also attach labels to show the currently detected pose or controller button -->
+            <!-- These also do teleportaion for Blink controls in VR -->
+            <a-entity data-right="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <a-entity data-left="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <!-- These get drawn towards grabable objects, moving the whole hand and the attached elements-->
+            <a-entity id="left-magnet" data-left="grip"  data-magnet="magnet-left"  grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#left-no-magnet;"></a-entity>
+            <a-entity id="right-magnet" data-right="grip" data-magnet="magnet-right" grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#right-no-magnet;"></a-entity>
+            <!-- markers to let us know the real location of the hands, you probably want to make them visible="false" or just make them empty <a-entities> -->
+            <a-entity id="left-no-magnet" data-left="grip" data-no-magnet>
+              <a-entity html="#my-interface" position="-0.142 -0.0166 -0.02928" rotation="-80 90 0" scale="0.7 0.7 0.7"></a-entity>
+            </a-entity>
+            <a-entity id="right-no-magnet" data-right="grip" data-no-magnet></a-entity>
+            <!-- Invisible objects at the tips of each finger for physics or intersections -->
+            <a-sphere data-right="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+          </a-entity>
+
+          <!-- Entorno -->
+          <a-entity>
+            <a-plane id="piso"
+            class="navmesh"
+            rotation="-90 0 0"
+            position="0 0 0"
+            width="80"
+            height="80"
+            repeat="25 25"
+            src="#texturapasto"
+            ></a-plane>
+
+            <a-sky src="#texturacielo" theta-start="-20">
+            </a-sky> 
+
+            <!-- Colocar arboles, decoraciones, fuente.... -->
+            <a-entity id="decoration-world">
+
+                <a-entity gltf-model="#tree-glft"  position="20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="-20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="-30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
+            </a-entity>
+
+          </a-entity>
+          <!-- Edificio -->
+          <a-entity id="edificio" position="0 0 0">
+            <a-plane id="piso-madera"
+            rotation="-90 0 0"
+            position="0 0.1 0"
+            width="35"
+            height="35"
+            repeat="5 5"
+            src="#texturapiso-madera"
+            ></a-plane>
+
+            <a-box id="edificio"
+            rotation="0 0 0"
+            position="0 10 0"
+            width="17"
+            height="40"
+            depth="17"
+            src="#texturapared">
+                <a-plane rotation="-90 0 0" width="17.5" height="17.5" position="0 -10 0" class="navmesh-hole" visible="false"></a-plane>
+            </a-box>
+
+            <!-- puerta -->
+            <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
+            <a-plane id="vidrio-puerta"
+            rotation="-180 180 180"
+            position="0 4 8.6"
+            width="4"
+            height="8"
+            src="#inside-reception"
+            ></a-plane>
+            <!-- parasoles -->
+
+            <a-box id="parasoles-azules"
+            rotation="-90 0 0"
+            position="0 12 0"
+            width="35"
+            height="16.9"
+            repeat="5 5"
+            depth="0.5"
+            src="#texturatecho-parasol"
+            ></a-box>
+        
+            
+
+        </a-scene>
+  
   </body>
 </html>
