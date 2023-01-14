@@ -1,475 +1,207 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Public Sector POC</title>
-      <meta property="og:title" content="Public Sector" />
-      <meta name="description" content="Public Sector">
-      <meta name="author" content="Santiago Botero">
-      <script>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Public Sector Oracle</title>
+        <meta property="og:title" content="Public Sector" />
+        <meta name="description" content="Public Sector">
+        <meta name="author" content="Santiago Botero">
+
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <!-- librerias para phisycs y que todo funcione -->
+         <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
+        <script src="assets/js/physics-simulator.js"></script>
+        <script src="assets/js/pop-up-recepcion.js"></script>
+        <script>
         // WebXR requires https: to work so ensure redirected if needed.
         if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
-      </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Reportar
-        const closePopup_Reportar = document.querySelector('#cerrar_Reportar');
-        const popup_Reportar = document.querySelector('#popup_reportar');
-        const information_Reportar = document.querySelector('#Reportar');
-
-        if (information_Reportar) information_Reportar.addEventListener('click', function (e) {
-          popup_Reportar.setAttribute('scale', '1 1 1');
+        </script>
+        <!-- click links redirrection -->
+        <script>
+        AFRAME.registerComponent("link-click", {
+          init: function() {
+            this.el.addEventListener("click", (e) => {
+                console.log(this.data)
+                window.open(this.data.href, '_blank').focus();
+            })
+          }
         })
-        
-        if (closePopup_Reportar) closePopup_Reportar.addEventListener('click', function (e) {
-          popup_Reportar.setAttribute('scale', '0 0 0');
-        })
+        </script>
 
-        // Inspeccionar
-        const closePopup_Inspeccionar = document.querySelector('#cerrar_inspeccionar');
-        const popup_Inspeccionar = document.querySelector('#popup_inspeccionar');
-        const information_Inspeccionar = document.querySelector('#Inspeccion');
-
-        if (information_Inspeccionar) information_Inspeccionar.addEventListener('click', function (e) {
-          popup_Inspeccionar.setAttribute('scale', '1 1 1');
-        })
-        
-        if (closePopup_Inspeccionar) closePopup_Inspeccionar.addEventListener('click', function (e) {
-          popup_Inspeccionar.setAttribute('scale', '0 0 0');
-        })
-
-        // Covid
-        const closePopup_Covid = document.querySelector('#cerrar_covid');
-        const popup_Covid = document.querySelector('#popup_covid');
-        const information_Covid = document.querySelector('#Covid');
-
-        if (information_Covid) information_Covid.addEventListener('click', function (e) {
-          popup_Covid.setAttribute('scale', '1 1 1');
-        })
-        
-        if (closePopup_Covid) closePopup_Covid.addEventListener('click', function (e) {
-          popup_Covid.setAttribute('scale', '0 0 0');
-        })
-
-        // Certificado de nacimiento
-        const closePopup_certificado = document.querySelector('#cerrar_certificado');
-        const popup_certificado = document.querySelector('#popup_certificado');
-        const information_certificado = document.querySelector('#Certificado');
-
-        if (information_certificado) information_certificado.addEventListener('click', function (e) {
-          popup_certificado.setAttribute('scale', '1 1 1');
-        })
-        
-        if (closePopup_certificado) closePopup_certificado.addEventListener('click', function (e) {
-          popup_certificado.setAttribute('scale', '0 0 0');
-        })
-
-      });
-    </script>
-
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe/dist/aframe-master.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
-<!-- librerias para phisycs y que todo funcione -->
- <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
-<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-extras/src/misc/sphere-collider.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Hypnos-phi/aframe-extras/dist/aframe-extras.controls.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/diarmidmackenzie/christmas-scene/lib/physx.release.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/diarmidmackenzie/christmas-scene/lib/physics.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/AdaRoseCannon/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handy-work/build/handy-controls.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handy-work/build/magnet-helpers.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aframe-htmlmesh/build/aframe-html.min.js"></script>
-<script src="js/simple-navmesh-constraint.js"></script>
-<script src="js/model-utils.js"></script>
-<script src="js/main.js"></script>
-
-<script>
-  AFRAME.registerComponent("link-click", {
-    init: function() {
-      this.el.addEventListener("click", (e) => {
-          console.log(this.data)
-          window.open(this.data.href, '_blank').focus();
-      })
-    }
-  })
-</script>
-
-  </head>
-  <body>
-    <a-scene>
-        <a-assets> 
-          <img id="piso" src="Texturas\Piso5.jpg">
-          <img id="piso_norm" src="Texturas\Piso5_NORM.jpg">
-          <img id="pared" src="Texturas\Pared2.jpg">
-          <img id="pared_norm" src="Texturas\Pared3_NORM.jpg">
-          <img id="techito" src="Texturas\Techito.jpg">
-          <img id="techito_norm" src="Texturas\Techito_NORM.jpg">
-          <img id="ventana" src="Texturas\Ventana1.jpg">
-          <img id="ventana_norm" src="Texturas\Ventana1_NORM.jpg">
-          <img id="stone" src="Texturas\Stone.jpg">
-          <img id="stone_norm" src="Texturas\Stone_NORM.jpg">
-          <img id="ventana_color" src="Texturas\Ventana2_COLOR.jpg">
-          <img id="cuadro" src="Texturas\Colombia.jpg">
-          <img id="educacion" src="Texturas\Educacion.jpg">
-          <img id="exterior" src="Texturas\Sky.jpg">
-          <img id="suelo" src="Texturas\Pasto.jpg">
-          <img id="piedra" src="Texturas\Piedra.jpg">
-          <img id="baldoza" src="Texturas\Madera.jpg">
-          <img id="suelo-NORM" src="Texturas\Pasto_NORM.jpg">
-          <a-asset-item id="door" src="Objetos\Door.glb"></a-asset-item>
-          <a-asset-item id="planta" src="Objetos\Plantas.glb"></a-asset-item>
-          <a-asset-item id="arbol" src="Objetos\Arbol.glb"></a-asset-item>
-          <a-asset-item id="banca" src="Objetos\Banca.glb"></a-asset-item>
-          <a-asset-item id="mesa2" src="Objetos\mesa2.glb"></a-asset-item>
-          <a-asset-item id="mesa3" src="Objetos\mesa3.glb"></a-asset-item>
-          <a-asset-item id="fuente" src="Objetos\fuente.glb"></a-asset-item>
-          <a-asset-item id="lampara" src="Objetos\lampara.glb"></a-asset-item>
-          <a-asset-item id="luz" src="Objetos\luz.glb"></a-asset-item>
-          <a-asset-item id="centro" src="Objetos\centro.glb"></a-asset-item>
-          <a-asset-item id="violeta" src="Objetos\violeta.glb"></a-asset-item>
-          <a-asset-item id="matera" src="Objetos\matera.glb"></a-asset-item>
-          <a-asset-item id="margarita" src="Objetos\margarita.glb"></a-asset-item>
-          <a-asset-item id="jasmine" src="Objetos\jasmine.glb"></a-asset-item>
-          <a-asset-item id="jasmine" src="Objetos\jasmine.glb"></a-asset-item>
-          <audio id="pajaros" src="Sonidos\pajaros.mp3"></audio>
-        </a-assets>
-  
-  
-        <!-- camera -->
-        <a-entity id="cameraRig"
-        simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
-        movement-controls="speed:0.5;camera:#head;"
-        position="0 0.8 25" rotation="0 0 0" >
-        <a-entity id="head"
-            camera="near:0.01;"
-            look-controls="pointerLockEnabled: false"
-            position="0 1.65 0">
-            <a-cursor position="0 0 -0.5"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: black; shader: flat"
-            cursor="rayOrigin: mouse">
-            </a-cursor>
-        </a-entity>
-        </a-entity>
-        
-        <!-- Sky -->
-        <a-sky src="#exterior">
-        </a-sky> -->
-  
-  
-  
-        <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>-->
-        
-        <!-- Suelo -->
-       
-        <a-box  color="#FFFFFF" src="#suelo"  repeat="25 25"  
-                normal-map="#suelo_NORM" normal-texture-repeat="5 5" normal-scale="0.5 0.5"
-                width="40" height="40" depth="0.04" scale="5 5 5"
-                position="0 -1 -8" rotation="-90 0 0" side="double" >
-        </a-box>
-  
-        <!-- Piso -->
-        <a-box  color="#E9F3FF" src="#piso"  repeat="5 5"  
-                normal-map="#piso_norm" normal-texture-repeat="5 5" normal-scale="1 1"
-                width="4" height="4" depth="0.04" scale="5 5 5"
-                position="0 -0.8 -8" rotation="-90 0 0" side="double" >
-        </a-box>
-  
-      <!-- Techito -->
-              <a-box  color="#E9F3FF" src="#techito"  repeat="5 5"  
-              normal-map="#techito_norm" normal-texture-repeat="5 5" normal-scale="1 1"
-              width="4" height="4" depth="0.04" scale="5 5 5"
-              position="10 11 -8" rotation="-90 0 0" side="double" >
-      </a-box>
-  
-      <!-- Baldoza lado derecho -->
-      <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5"  
-      normal-texture-repeat="5 5" normal-scale="1 1"
-      width="4" height="4" depth="0.04" scale="5 5 18"
-      position="10 -0.8 -8" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-      <!-- Techito -->
-      <a-box  color="#E9F3FF" src="#techito"  repeat="5 5"  
-      normal-map="#techito_norm" normal-texture-repeat="5 5" normal-scale="1 1"
-      width="4" height="4" depth="0.04" scale="5 5 5"
-      position="-10 11 -8" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Baldoza lado izquierdo -->
-  <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5"  
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="4" height="4" depth="0.04" scale="5 5 18"
-  position="-10 -0.8 -8" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Baldoza frente derecho -->
-  <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="4" height="4" depth="0.04" scale="5 5 18"
-  position="10 -0.8 8" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Baldoza frente izquierdo -->
-  <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5"  
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="4" height="4" depth="0.04" scale="5 5 18"
-  position="-10 -0.8 8" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Baldoza trasera izquierdo -->
-  <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5"  
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="4" height="4" depth="0.04" scale="5 5 18"
-  position="-10 -0.8 -15" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Baldoza trasera derecha -->
-  <a-box  color="#E9F3FF" src="#baldoza"  repeat="5 5"  
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="4" height="4" depth="0.04" scale="5 5 18"
-  position="10 -0.8 -15" rotation="-90 0 0" side="double" >
-  </a-box>
-  
-  <!-- Piedras lado derecho -->
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 40" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 35" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 30" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 25" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 20" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="1.5 -0.8 15" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <!-- Piedras lado izquierdo -->
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 40" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 35" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 30" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 25" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 20" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-  <a-cylinder  color="#E9F3FF" src="#stone"  repeat="5 5" normal-map="#stone_norm" 
-  normal-texture-repeat="5 5" normal-scale="1 1"
-  width="0.1" height="0.1" depth="0.04" scale="0.8 0.8 1"
-  position="-1.5 -0.8 15" rotation="0 0 0" side="double" >
-  </a-cylinder>
-  
-        <!-- Pared izquierda -->
-        <a-box  color="#FFFFFF" src="#pared" repeat="1 1"  
-                width="4" height="10" depth="0.03" scale="5 4 5"
-                position="-10 3.9 -8" rotation="0 90 0" side="double" >
-        </a-box>
-  
-        <!-- Pared derecha -->
-        <a-box  color="#FFFFFF" src="#pared" repeat="1 1"  
-                width="4" height="10" depth="0.03" scale="5 4 5"
-                position="10  3.9 -8" rotation="0 90 0" side="double" >
-        </a-box>
-  
-        <!-- Pared posterior -->
-        <a-box  color="#EAE7E7" src="#pared" repeat="1 1"  
-                width="4" height="7.8" depth="0.03" scale="5 5 5"
-                position="0  4.9 -18" rotation="0 0 0" side="double" >
-                  <!-- Ventana 1 -->
-                  <a-box  color="#E4FFFF" src="#cuadro" repeat="1 1"  
-                  width="1.25" height="0.7" depth="0.022" scale="3 2 2.4"
-                  material="alphaTest:0.9"
-                  position="0  0.1 -0.005" rotation="0 0 0" side="double">
-                  </a-box> 
-                  <!-- normal-map="#ventana_norm" normal-texture-repeat="1 1" normal-scale="1 -2" -->
-  
-                  <!-- Marco ventana 1 -->
-                  <a-box  color="#212121" 
-                  width="1.27" height="0.73" depth="0.019" scale="3 2 2.4"
-                  position="0  0.1 -0.005" rotation="0 0 0" side="double">
-                  </a-box> 
-        </a-box>
+    </head>
+    <body>
+        <a-scene reflection="directionalLight:#dirlight;" renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;">
+          <a-assets>
+              <!-- OCOLUS CONTROLS HANDS ASSETS -->
+              <!-- mano derecha eskeleto -->
+              <a-asset-item id="right-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-right-hand-webxr/model.gltf"></a-asset-item>
+              <!-- mano izquierda -->
+              <a-asset-item id="left-gltf" src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/skeleton-left-hand-webxr/model.gltf"></a-asset-item>
+              <!-- reloj exit -->
+              <a-asset-item id="watch-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/watch.glb?v=1645016979219"></a-asset-item>
+              <!-- reloj -->
+              <a-asset-item id="clock-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/vintage_grandfather_clock_01_1k-v2.glb?v=1647265174189"></a-asset-item>
+              
+              <a-mixin id="animations" animation__click="property: components.material.material.color; type: color; to: blue; startEvents: click; dur: 500;"></a-mixin>
+              <a-mixin id="blink" blink-controls="rotateOnTeleport:false;cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.navmesh;"></a-mixin>
+              <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
       
-      <!-- Pared delantera -->
-      <a-box  color="#EAE7E7" src="#pared" repeat="1 1"  
-            width="4" height="7.8" depth="0.03" scale="5 5 5"
-            position="0  4.9 2" rotation="0 0 0" side="double" >
-              <!-- Ventana 2 -->
-              <a-box  color="#E4FFFF" src="#cuadro" repeat="1 1"  
-              width="1.25" height="0.7" depth="0.022" scale="3 2 2.4"
-              material="alphaTest:0.9"
-              position="0  5 -0.005" rotation="0 0 0" side="double">
-              </a-box> 
-              <!-- normal-map="#ventana_norm" normal-texture-repeat="1 1" normal-scale="1 -2" -->
-            
-              <!-- Marco ventana 2 -->
-              <a-box  color="#212121" 
-              width="1.27" height="0.73" depth="0.019" scale="3 2 2.4"
-              position="0  5 -0.005" rotation="0 0 0" side="double">
-              </a-box> 
-          </a-box> 
-      
-       <!-- Pared delantera -->
-          <a-box  color="#EAE7E7" src="#pared" repeat="1 1"  
-          width="4" height="7.8" depth="0.03" scale="5 5 5"
-          position="0  4.9 2" rotation="0 0 0" side="double" >
-            <!-- Ventana 2 -->
-            <a-box  color="#E4FFFF" src="#educacion" repeat="1 1"  
-            width="1.23" height="0.7" depth="0.022" scale="3 2 2.4"
-            material="alphaTest:0.9"
-            position="0  2.3 -0.005" rotation="0 0 0" side="double">
-            </a-box> 
-            <!-- normal-map="#ventana_norm" normal-texture-repeat="1 1" normal-scale="1 -2" -->
+              <!-- Textures -->
+              <img id="texturapasto" src="assets/images/textures/pasto.jpg"  crossorigin="anonymous"/>
+              <img id="texturacielo" src="assets/images/textures/cielo.jpg"  crossorigin="anonymous"/>
+              <img id="texturatecho-parasol" src="assets/images/textures/techo-parasol.jpg"  crossorigin="anonymous"/>
+              <img id="texturapiso-madera" src="assets/images/textures/piso-madera.jpg"  crossorigin="anonymous"/>
+              <img id="texturapared" src="assets/images/textures/pared.jpg"  crossorigin="anonymous"/>
+              <img id="texturastone" src="assets/images/textures/stone.jpg"  crossorigin="anonymous"/>
+              <!-- UI -->
+              <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
+              <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
+              <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <img id="inside-reception" src="assets/images/textures/inside-reception.png"  crossorigin="anonymous"/>
+              <!-- information images -->
+
+              <!-- objetos -->
+
+              <a-gltf-model id="puerta-entrada-glft" shadow="receive:true;cast:true;" src="assets/objects/puerta.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="puerta-entrada" gltf-model="#puerta-entrada-glft"></a-mixin>
+
+              <a-gltf-model id="tree-glft" shadow="receive:true;cast:true;" src="assets/objects/arbol.glb"  crossorigin="anonymous"></a-gltf-model>
+              
           
-            <!-- Marco ventana 2 -->
-            <a-box  color="#212121" 
-            width="1.27" height="0.73" depth="0.019" scale="3 2 2.4"
-            position="0  2.3 -0.005" rotation="0 0 0" side="double">
-            </a-box> 
-        </a-box> 
-  
-         <!-- Techo -->
-         <a-box  color="#FFFFFF" src="#pared" repeat="1 1" 
-                 width="4" height="4" depth="0.04" scale="5 5 5"
-                 position="0  10 -8" rotation="90 0 0" side="double" >
-        </a-box>
-  
-        <!-- Pared frontal -->
-        <!-- <a-box  color="#EAE7E7" src="#pared_posterior" repeat="2 1"  
-                width="4" height="2.5" depth="0.03" scale="3 3 3"
-                position="0 3.82 -2" rotation="0 0 0" side="simple" >
-        </a-box> -->
-        
-        <a-entity id="cameraRig"
-        wasd-controls
-        look-controls="pointerLockEnabled: false">
-        <a-entity id="head"
-          camera="near:0.01;"
-          look-controls="pointerLockEnabled: false"
-          position="0 1.65 0">
-          <a-cursor position="0 0 -0.5"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: #808080; shader: flat"
-            cursor="rayOrigin: mouse">
-          </a-cursor>
-        </a-entity>
-      </a-entity>
-        
-        <a-entity gltf-model="#door"  position="0 2 2.5" rotation="0 -90 0" scale="5 5 4" link-click="href: /Proyect-Aframe-PS/reception.html"></a-entity>
-        <a-entity gltf-model="#planta"  position="-50 -0.4 2.5" rotation="0 -90 0" scale="0.4 0.4 0.8"></a-entity>
-        <a-entity gltf-model="#planta"  position="-150 -0.4 2.5" rotation="0 -90 0" scale="0.4 0.4 0.8"></a-entity>
-        <a-entity gltf-model="#arbol"  position="8 -1 5" rotation="0 -90 0" scale="10 10 10"></a-entity>
-        <a-entity gltf-model="#arbol"  position="9 -1 5" rotation="0 -90 0" scale="15 15 15"></a-entity>
-        <a-entity gltf-model="#arbol"  position="-8 -1 5" rotation="0 -90 0" scale="10 10 10"></a-entity>
-        <a-entity gltf-model="#arbol"  position="-9 -1 5" rotation="0 -90 0" scale="15 15 15"></a-entity>
-        <a-entity gltf-model="#banca"  position="12 -0.6 -3" rotation="0 90 0" scale="3 3 3"></a-entity>
-        <a-entity gltf-model="#banca"  position="12 -0.6 -12" rotation="0 90 0" scale="3 3 3"></a-entity>
-        <a-entity gltf-model="#banca"  position="19 -0.6 -3" rotation="0 -90 0" scale="3 3 3"></a-entity>
-        <a-entity gltf-model="#banca"  position="19 -0.6 -12" rotation="0 -90 0" scale="3 3 3"></a-entity>
-        <a-entity gltf-model="#centro"  position="15.5 -0.6 -11" rotation="0 -90 0" scale="1.5 1.5 1"></a-entity>
-        <a-entity gltf-model="#centro"  position="15.5 -0.6 -2" rotation="0 -90 0" scale="1.5 1.5 1"></a-entity>
-        <a-entity gltf-model="#mesa2"  position="-15 0.3 -13" rotation="0 90 0" scale="0.7 0.7 1"></a-entity>
-        <a-entity gltf-model="#mesa3"  position="-15 -0.6 -13" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-        <a-entity gltf-model="#mesa2"  position="-15 0.3 -2" rotation="0 90 0" scale="0.7 0.7 1"></a-entity>
-        <a-entity gltf-model="#mesa3"  position="-15 -0.6 -2" rotation="0 90 0" scale="1.5 1.5 1.5"></a-entity>
-        <a-entity gltf-model="#fuente"  position="0 -0.2 45" rotation="0 90 0" scale="1 1 2"></a-entity>
-        <a-entity gltf-model="#lampara"  position="-16.8 -0.15 15.8" rotation="0 -90 0" scale="4 4 4"></a-entity>
-        <a-entity gltf-model="#lampara"  position="17 -0.15 15.8" rotation="0 -90 0" scale="4 4 4"></a-entity>
-        <a-entity gltf-model="#lampara"  position="-16.8 -0.15 -22" rotation="0 90 0" scale="4 4 4"></a-entity>
-        <a-entity gltf-model="#lampara"  position="17 -0.15 -22" rotation="0 90 0" scale="4 4 4"></a-entity>
-        <a-entity gltf-model="#luz"  position="0 9 7" rotation="0 90 0" scale="0.1 0.1 0.1" 
-                       sound="src:#pajaros; on: click; volumen: 1; refDistance: 4; rolloffFactor: 4"></a-entity>
-        <a-entity gltf-model="#violeta"  position="8 -1 52" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#matera"  position="15.5 1 -2" rotation="0 90 0" scale="0.3 0.2 0.3"></a-entity>
-        <a-entity gltf-model="#matera"  position="15.5 1 -11" rotation="0 90 0" scale="0.3 0.2 0.3"></a-entity>
-        <a-entity gltf-model="#margarita"  position="15.5 1 45" rotation="0 90 0" scale="20 20 20"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="8 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="9 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="10 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="11 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="12 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="7 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="6 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="5 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="4 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="13 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="14 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="15 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="16 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="17 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="18 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="19 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="20 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-4 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-5 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-6 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-7 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-8 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-9 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-10 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-11 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-12 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-13 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-14 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-15 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-16 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-17 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-18 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-19 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-        <a-entity gltf-model="#jasmine"  position="-20 -2 18.5" rotation="0 90 0" scale="1 1 1"></a-entity>
-      </a-scene>
+          </a-assets>
+          <!-- Luz-->
+          <a-light id="dirlight" intensity="2" light="castShadow:false;type:hemisphere" position="0 -6 0"></a-light>
+          <!-- Camera -->
+          <a-entity id="cameraRig"
+            wasd-controls
+            look-controls="pointerLockEnabled: false"
+            simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
+            movement-controls="speed:0.5;camera:#head;"
+            position="0 0.8 30" rotation="0 0 0" >
+            <a-entity id="head"
+              camera="near:0.01;"
+              position="0 1.65 0">
+              <a-cursor position="0 0 -0.5"
+                geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
+                material="opacity: 0.6; shader: flat" 
+                cursor="rayOrigin: mouse">
+              </a-cursor>
+            </a-entity>
+          </a-entity>
+          
+          <!-- Hand tracking -->
+          <a-entity handy-controls="right:#right-gltf;materialOverride:right;" material="color:gold;metalness:1;roughness:0;">
+            <!-- Boton oara salir de VR -->
+            <a-gltf-model src="#watch-gltf" data-left="wrist" position="-1000 0 0">
+              <a-sphere radius="0.02" position="0 0.02 0" sphere-collider="radius:0.02;objects:[data-right$=-tip];" exit-on="hitend" visible="false"></a-sphere>
+            </a-gltf-model>
+            <!-- Add a golden ring on the finger -->
+            <a-entity data-left="ring-finger-phalanx-proximal">
+              <a-torus position="0 0 -0.03" radius="0.008" radius-tubular="0.001" scale="1 1 1.5" material="color:gold;metalness:1;roughness:0;"></a-torus>
+            </a-entity>
+            <!-- Usar los dedos para teleportacion -->
+            <a-entity data-right="index-finger-tip" mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <a-entity data-left="index-finger-tip"  mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
+            <!-- The direction hands are facing, we will also attach labels to show the currently detected pose or controller button -->
+            <!-- These also do teleportaion for Blink controls in VR -->
+            <a-entity data-right="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <a-entity data-left="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+              <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
+            </a-entity>
+            <!-- These get drawn towards grabable objects, moving the whole hand and the attached elements-->
+            <a-entity id="left-magnet" data-left="grip"  data-magnet="magnet-left"  grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#left-no-magnet;"></a-entity>
+            <a-entity id="right-magnet" data-right="grip" data-magnet="magnet-right" grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#right-no-magnet;"></a-entity>
+            <!-- markers to let us know the real location of the hands, you probably want to make them visible="false" or just make them empty <a-entities> -->
+            <a-entity id="left-no-magnet" data-left="grip" data-no-magnet>
+              <a-entity html="#my-interface" position="-0.142 -0.0166 -0.02928" rotation="-80 90 0" scale="0.7 0.7 0.7"></a-entity>
+            </a-entity>
+            <a-entity id="right-no-magnet" data-right="grip" data-no-magnet></a-entity>
+            <!-- Invisible objects at the tips of each finger for physics or intersections -->
+            <a-sphere data-right="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-right="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="index-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="middle-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="ring-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="pinky-finger-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+            <a-sphere data-left="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
+          </a-entity>
 
+          <!-- Entorno -->
+          <a-entity>
+            <a-plane id="piso"
+            class="navmesh"
+            rotation="-90 0 0"
+            position="0 0 0"
+            width="80"
+            height="80"
+            repeat="25 25"
+            src="#texturapasto"
+            ></a-plane>
+
+            <a-sky src="#texturacielo" theta-start="-20">
+            </a-sky> 
+
+            <!-- Colocar arboles, decoraciones, fuente.... -->
+            <a-entity id="decoration-world">
+
+                <a-entity gltf-model="#tree-glft"  position="20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="-20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
+                <a-entity gltf-model="#tree-glft"  position="-30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
+            </a-entity>
+
+          </a-entity>
+          <!-- Edificio -->
+          <a-entity id="edificio" position="0 0 0">
+            <a-plane id="piso-madera"
+            rotation="-90 0 0"
+            position="0 0.1 0"
+            width="35"
+            height="35"
+            repeat="5 5"
+            src="#texturapiso-madera"
+            ></a-plane>
+
+            <a-box id="edificio"
+            rotation="0 0 0"
+            position="0 10 0"
+            width="17"
+            height="40"
+            depth="17"
+            src="#texturapared">
+                <a-plane rotation="-90 0 0" width="17.5" height="17.5" position="0 -10 0" class="navmesh-hole" visible="false"></a-plane>
+            </a-box>
+
+            <!-- puerta -->
+            <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
+            <a-plane id="vidrio-puerta"
+            rotation="-180 180 180"
+            position="0 4 8.6"
+            width="4"
+            height="8"
+            src="#inside-reception"
+            ></a-plane>
+            <!-- parasoles -->
+
+            <a-box id="parasoles-azules"
+            rotation="-90 0 0"
+            position="0 12 0"
+            width="35"
+            height="16.9"
+            repeat="5 5"
+            depth="0.5"
+            src="#texturatecho-parasol"
+            ></a-box>
+        
+            
+
+        </a-scene>
+  
   </body>
 </html>
-
-
-
