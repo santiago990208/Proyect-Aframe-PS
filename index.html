@@ -63,6 +63,8 @@
               <img id="inside-reception" src="assets/images/textures/inside-reception.png"  crossorigin="anonymous"/>
               <img id="letrero-entrada" src="assets/images/ui/letrero-entrada.png"  crossorigin="anonymous"/>
               <img id="letrero-mineducacion" src="assets/images/ui/letrero-mineducacion.png"  crossorigin="anonymous"/>
+              <img id="mapa-metaverso" src="assets/images/ui/mapa-metaverso.png"  crossorigin="anonymous"/>
+
               <!-- information images -->
 
               <!-- objetos -->
@@ -82,6 +84,7 @@
               <a-gltf-model id="mesa-izquierda-edificio-glft" shadow="receive:true;cast:true;" src="assets/objects/mesa-izquierda-edificio.glb"  crossorigin="anonymous"></a-gltf-model>
               <a-gltf-model id="matera-glft" shadow="receive:true;cast:true;" src="assets/objects/matera.glb"  crossorigin="anonymous"></a-gltf-model>
               <a-gltf-model id="sombrillas-izquierda-edificio-glft" shadow="receive:true;cast:true;" src="assets/objects/sombrillas-izquierda-edificio.glb"  crossorigin="anonymous"></a-gltf-model>
+
 
               <!-- Sonidos reception de pajaros-->
               <audio id="sonido-pajaros" shadow="receive:true;cast:true;" src="Sound/sonidos/sonido-pajaros.mp3" crossorigin="anonymous"></audio>
@@ -236,6 +239,7 @@
                 <a-entity gltf-model="#jasmine-glft"  position="-4 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
                 <a-entity gltf-model="#jasmine-glft"  position="-3 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
                 <a-entity gltf-model="#jasmine-glft"  position="-2 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
+
                 
                 
             </a-entity>
@@ -310,6 +314,22 @@
             depth="0.5"
             src="#texturatecho-parasol"
             ></a-box>
+
+           <!-- mapa -->
+           <a-entity>
+           <a-image id="mapa-metaverso"
+           rotation="-15 45 0"
+           position="-8 3 14"
+           width="5"
+           height="3"
+           src="#mapa-metaverso"
+           ></a-image>
+              
+           <!-- Marco mapa metaverso -->
+           <a-box  color="#212121" 
+           width="11" height="8.5" depth="0.019" scale="0.5 0.5 1.5"
+           position="-8 2.8 14" rotation="-16 45 0" side="double">
+           </a-box>
           
             <!-- Piedras entrada -->
             <a-entity id="stone" position="0 0 0">
