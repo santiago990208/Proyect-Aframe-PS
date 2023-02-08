@@ -87,7 +87,7 @@
 
 
               <!-- Sonidos reception de pajaros-->
-              <audio id="sonido-pajaros" shadow="receive:true;cast:true;" src="Sound/sonidos/sonido-pajaros.mp3" crossorigin="anonymous"></audio>
+              <!-- <audio id="sonido-pajaros" shadow="receive:true;cast:true;" src="Sound/sonidos/sonido-pajaros.mp3" crossorigin="anonymous"></audio> -->
           
           </a-assets>
           <!-- Luz-->
@@ -267,7 +267,7 @@
             </a-box>
 
             <!-- puerta -->
-            <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
+            <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" link-click="href: reception.html"></a-entity>
             <a-plane id="vidrio-puerta"
             rotation="-180 180 180"
             position="0 4 8.6"
