@@ -19,7 +19,7 @@
         </script>
         <!-- click links redirrection -->
         <script>
-        AFRAME.registerComponent("link-click", {
+         AFRAME.registerComponent("link-click", {
           init: function() {
             this.el.addEventListener("click", (e) => {
                 console.log(this.data)
@@ -274,6 +274,7 @@
             width="4"
             height="8"
             src="#inside-reception"
+            link-click="href: reception.html"
             ></a-plane>
 
             <!-- letrero mineducacion -->
