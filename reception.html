@@ -292,6 +292,17 @@
             src="#ventana-recepcion"
             ></a-plane>
 
+            <a-entity id="totem" position="0 0 15">
+              <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
+              <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
+              <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
+              <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
+                  <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                  <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
+                  <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+              </a-entity>
+            </a-entity>
+
             <!-- Oficinas con registro reception.... -->
             <a-entity id="oficinas-reception">
 
