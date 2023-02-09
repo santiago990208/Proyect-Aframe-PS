@@ -42,7 +42,7 @@
               <a-asset-item id="watch-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/watch.glb?v=1645016979219"></a-asset-item>
               <!-- reloj -->
               <a-asset-item id="clock-gltf" src="https://cdn.glitch.global/d29f98b4-ddd1-4589-8b66-e2446690e697/vintage_grandfather_clock_01_1k-v2.glb?v=1647265174189"></a-asset-item>
-              
+              <a-asset-item id="logo_inspeccion" src="assets/objects/inspeccion.glb"></a-asset-item>
               <a-mixin id="animations" animation__click="property: components.material.material.color; type: color; to: blue; startEvents: click; dur: 500;"></a-mixin>
               <a-mixin id="blink" blink-controls="rotateOnTeleport:false;cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.navmesh;"></a-mixin>
               <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
@@ -60,11 +60,16 @@
               <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+
               <!-- information images -->
               <img id="centro_informacion_popup_mensaje" src="assets/images/information/centro-informacion-mensaje.png"  crossorigin="anonymous">
               <img id="informacion_acceso_popup_mensaje" src="assets/images/information/informacion-acceso-mensaje.png"  crossorigin="anonymous">
               <img id="poster-covid" src="assets/images/information/covid-poster.png"  crossorigin="anonymous">
               <img id="poster-frontera" src="assets/images/information/frontera-poster.png"  crossorigin="anonymous">
+              <img id="texto_inspeccion" src="assets/images/information/Inspeccionar.jpg" crossorigin="anonymous">
+
+              <img id="micro" src="assets/images/textures/microfono.png" crossorigin="anonymous">
 
               <!-- Videos -->
               <a-video id="video-pantalla" src="assets/videos/video-test.mp4" width="16" height="9" crossorigin="anonymous"></a-video>
@@ -87,6 +92,9 @@
 
               <a-gltf-model id="punto-informacion-glft" shadow="receive:true;cast:true;" src="assets/objects/punto-informacion.glb"  crossorigin="anonymous"></a-gltf-model>
               <a-mixin id="punto-informacion" gltf-model="#punto-informacion-glft"></a-mixin>
+
+              <a-gltf-model id="escritorio-counter-glft" shadow="receive:true;cast:true;" src="assets/objects/counter.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-mixin id="escritorio-counter" gltf-model="#escritorio-counter-glft"></a-mixin>
 
               <a-mixin id="banca" geometry="primitive: box; width:1;height:1.6;depth:3"  ></a-mixin>
               <a-mixin id="totem-base" geometry="primitive: box; width:0.5;height:3.5;depth:0.5"  ></a-mixin>
@@ -283,17 +291,69 @@
             height="6"
             src="#ventana-recepcion"
             ></a-plane>
-
             <a-entity id="totem" position="0 0 15">
-                  <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
-                  <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
-                  <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
-                  <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
-                      <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
-                      <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
-                      <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
-                  </a-entity>
+              <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
+              <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
+              <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
+              <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
+                  <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
+                  <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
+                  <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
+              </a-entity>
             </a-entity>
+
+            <!-- Oficinas con registro reception.... -->
+            <a-entity id="oficinas-reception">
+
+              <a-entity id="counter_inspeccion" position="18 0 0" rotation="0 -90 0" >
+                <a-entity mixin="escritorio-counter" position="0 0 0" scale="2 2 2">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -0.1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity id="logo_consulta1" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
+                  animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
+                <a-entity id="popup_consulta1" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0" rotation="0 -90 0" scale="0 0 0">
+                  <!-- Consulta trámite.... -->
+                  <a-image id="cerrar_consulta1" position="2.01 0.9 -1" scale="1.5 1.5 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
+                  <a-entity 
+                    geometry="primitive:plane; height:2.2; width:2.8" material="color:white" 
+                    position="2  0 0" scale="1 1 1" rotation="0 90 0 ">
+                    <a-entity 
+                      geometry="primitive:plane; width:2.3"  position="0  0.6 0.01"
+                      material="transparent:true; opacity: 0; alphaTest: 1" 
+                      scale="1 1 1"
+                      text="value:Diga el codigo de solicitud\n.; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
+                      >
+                    </a-entity>
+                    <a-circle id="microfono1" color="#FFFFFF" radius="0.35" position="0 0.15 0.02" src="#micro"></a-circle>
+                    <a-entity id="Text1" geometry="primitive:plane; height:0.35; width:1.2"
+                              material="color:#94BCF9" 
+                              position="0  -0.4 0.1" text="value:-;wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
+                    ></a-entity>
+                    <a-entity id="boton_consultar" geometry="primitive:plane; height:0.280; width:0.8"
+                              material="color:#FFC195" 
+                              position="0  -0.8 0.1" text="value:Consultar;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;"
+                    ></a-entity>
+                  </a-entity>
+                </a-entity> 
+                
+                
+              </a-entity>
+
+              <a-entity id="counter_inspeccion" position="-18 0 0" rotation="0 -90 0" >
+                <a-entity mixin="escritorio-counter" position="0 0 0" scale="2 2 2">
+                    <a-plane rotation="-90 0 0" width="5" height="5" position="0 -0.1 0" class="navmesh-hole" visible="false"></a-plane>
+                </a-entity>
+                <a-entity id="logo_consulta2" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
+                  animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
+                <a-entity id="popup_inspeccion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+                  <a-image id="pop_inspeccion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
+                  <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
+                  <a-image id="continuar_inspeccion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
+                </a-entity>  
+              </a-entity>
+              
+            </a-entity>
+
             <a-entity id="pantalla-izquierda" position="-19.9 4 0" rotation="0 90 0">
                   <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
                   <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
@@ -306,7 +366,7 @@
                   <a-entity mixin="pantalla" scale="2 2 0" position="0 0 0.1" ></a-entity>
                   <a-entity mixin="border-pantalla" scale="2 2 0" position="0 0 0"></a-entity>
             </a-entity>
-            
+
             <a-entity id="sillas-de-espera" position="0 0 0">
                   <a-entity mixin="sillas-espera" position="0 1 -5" scale="0.4 0.4 0.4" rotation="0 90 0">
                       <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
