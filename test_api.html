@@ -1,11 +1,11 @@
 <script>
     const username = 'john.martin';
-    const password = 'pRA4g*4^';
+    const password = 'yCY5b?8?';
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
 
-    fetch('https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests', {
+    fetch('https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/SR218439', {
         method: 'GET',
         headers: headers
     })

@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
         information_Reportes1.setAttribute('scale', '0 0 0');
     });
     
+    const close_consult_sr_respond = document.querySelector('#close_consult_sr_respond');
+    const popup_consult_sr_respond = document.querySelector('#popup_consult_sr_respond');
+
+    if (close_consult_sr_respond) close_consult_sr_respond.addEventListener('click', function (e) {
+        popup_consult_sr_respond.setAttribute('scale', '0 0 0');
+        var api_respond_info = document.querySelector('#api_respond_info');
+        api_respond_info.innerHTML = "";
+    });
+    
     //Grabación de voz 1
     const grabar = document.querySelector('#microfono1');
     const texto = document.querySelector('#Text1');
@@ -48,31 +57,43 @@ document.addEventListener('DOMContentLoaded', function() {
     recognition.onresult = (event) => {
         const results=event.results; 
         const frase= results[results.length-1][0].transcript;
-        //console.log(frase);
         texto.setAttribute('text', 'value:'+frase);
-        //texto.value =frase;
     }
 
     if (grabar) grabar.addEventListener('click', function (e) {
         console.log('Start recording');
         recognition.start();
-        
     })
     //Fin grabación
     const consultar = document.querySelector('#boton_consultar');
     if (consultar) consultar.addEventListener('click', function (e) {
+            
         const consulta=texto.getAttribute('text');
-        value=Object.values(consulta)[0]
-        palabra='';
+        var value=Object.values(consulta)[0]
+        var palabra='';
         for (i in value){
             if(value[i]!==' '){
-                //console.log(value[i]);
                 palabra+=value[i]
             }
         }
-        console.log(value);
+        
+        console.log(palabra);
+
+        var idtest="218439"
         //condicion para limpiar espacios y solo aceptar numero
-        url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+consulta_formato;
-        console.log('URL: ', url);
+        var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+palabra;
+        console.log(url)
+        
+        var username = 'john.martin';
+        var password = 'yCY5b?8?';
+
+		const build_world = new BuilderAPI(url, username, password);
+  		build_world.api_call(); 	
+          
+		
     });
+
+    
+        
+     
 });
