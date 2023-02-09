@@ -59,19 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
     })
     //Fin grabación
+
     const consultar = document.querySelector('#boton_consultar');
     if (consultar) consultar.addEventListener('click', function (e) {
         const consulta=texto.getAttribute('text');
         value=Object.values(consulta)[0]
-        palabra='';
-        for (i in value){
-            if(value[i]!==' '){
-                //console.log(value[i]);
-                palabra+=value[i]
-            }
-        }
         console.log(value);
-        //condicion para limpiar espacios y solo aceptar numero
+        consulta_formato='SR'+value;
+        console.log(consulta_formato);
         url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+consulta_formato;
         console.log('URL: ', url);
     });
