@@ -331,7 +331,7 @@
                       geometry="primitive:plane; width:2.3"  position="0  0.6 0.01"
                       material="transparent:true; opacity: 0; alphaTest: 1" 
                       scale="1 1 1"
-                      text="value:Diga el codigo de solicitud\n.; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
+                      text="value: Enter the request code\n.; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:50;"
                       >
                     </a-entity>
                     <a-circle id="microfono1" color="#FFFFFF" radius="0.35" position="0 0.15 0.02" src="#micro"></a-circle>
@@ -341,7 +341,7 @@
                     ></a-entity>
                     <a-entity id="boton_consultar" geometry="primitive:plane; height:0.280; width:0.8"
                               material="color:#FFC195" 
-                              position="0  -0.8 0.1" text="value:Consultar;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;"
+                              position="0  -0.8 0.1" text="value:Consult;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;"
                     ></a-entity>
                   </a-entity>
                 </a-entity> 
@@ -353,7 +353,7 @@
                     <a-entity 
                       geometry="primitive:plane; width:2.3"  position="0  0.6 0.01"
                       material="transparent:true; opacity: 0; alphaTest: 1" 
-                      text="value:El SR tiene la siguiente info\n; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
+                      text="value: The SR has the following information\n; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
                       >
                     </a-entity>
                     <a-entity id="api_respond_info"></a-entity>
@@ -479,7 +479,7 @@
                         geometry="primitive:plane; width:2.3"
                         material="transparent:true; opacity: 0; alphaTest: 1" 
                         scale="1.1 1.1 1.1"
-                        text="value: Bienvenido. Realice sus consultas; wrapCount:21; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                        text="value: Welcome, \n please select your concern; wrapCount:21; align:center; width: 1.5; color: black; lineHeight:45; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                         position="0 1.18 0.055" 
                         >
                     </a-entity>
@@ -491,7 +491,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q1-a1")'
                             active-color="#92CAFF"
-                            text="value:.  ¿Que puedo hacer en el edificio?; wrapCount:25; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:What can I do in the building?; wrapCount:25; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -501,7 +501,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q1-a2")'
                             active-color="#92CAFF"
-                            text="value:.  ¿Debo estar registrado para        .  acceder a los servicios?; wrapCount:25; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Do I have to be registered to access the services?; wrapCount:25; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -511,7 +511,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q1-a3")'
                             active-color="#92CAFF"
-                            text="value:.  ¿Donde obtengo mas informacion?; wrapCount:26; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Where can I find more information?; wrapCount:26; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -521,7 +521,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q1-a4")'
                             active-color="#92CAFF"
-                            text="value:.  Localizacion de tramites; wrapCount:25; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Localization of procedures; wrapCount:25; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -531,13 +531,13 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q1-a5")'
                             active-color="#92CAFF"
-                            text="value:.  Ayuda personalizada; wrapCount:25; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Customised help; wrapCount:25; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
                         </a-gui-radio>
                     </a-gui-flex-container>   
-                    <a-gui-button  id="m1-q1-next" position="0 -1.96 0.09"  scale="0.01 0.01 0.01"  width="1.3" height="0.4" onclick='nextListener2("m1-q1-next")' key-code="32" text="value: Siguiente ;z-offset:0.03; wrapCount:15; align:center; width: 1.7; color: black; shader: msdf;" hover-color="yellow"  border-color="#FFD597" active-color="#FFBC7E"></a-gui-button>                  
+                    <a-gui-button  id="m1-q1-next" position="0 -1.96 0.09"  scale="0.01 0.01 0.01"  width="1.3" height="0.4" onclick='nextListener2("m1-q1-next")' key-code="32" text="value: Next ;z-offset:0.03; wrapCount:15; align:center; width: 1.7; color: black; shader: msdf;" hover-color="yellow"  border-color="#FFD597" active-color="#FFBC7E"></a-gui-button>                  
                   </a-entity>
                   <!-- Question 1 end -->
 
@@ -547,7 +547,7 @@
                       geometry="primitive:plane; width:2.3; height:3.2"
                       material="color:FFFFFF" 
                       scale="0.001 0.001 0.001"
-                      text="value: Para registrarse vaya hacia \n la mesa de registro \ndel 1° Piso y seleccione \n el logo; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                      text="value: To register go to the \n registration desk \n on the 1st Floor and select \n the logo; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                       position="0 0.1 0.08" 
                   >
                       <a-image id="atras_R1" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
@@ -557,7 +557,7 @@
                     geometry="primitive:plane; width:2.3; height:3.2"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: En el 1° piso se \n encuentran servicios que no \n requieren registro. \n\n En el 2° piso los servicios \n requieren registrarse.; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: On the 1st floor \n there are services that do not \n require registration. \n\n On the 2nd floor services \n require registration.; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08"  
                 >
                     <a-image id="atras_R2" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
@@ -567,7 +567,7 @@
                     geometry="primitive:plane; width:2.3; height:3.2"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: Mapa: En el mapa puede visualizar \n la ubicacion de cada servicio.  \n\n Guardias: El guardia de cada piso te\n brindará la información necesaria\n de dicho piso.; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: Map: On the map you can see \n the location of each service.  \n\n Guards: The guard on each floor will\n provide you with the necessary information\n about that floor.; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08" 
                 >
                     <a-image id="atras_R3" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
@@ -577,7 +577,7 @@
                     geometry="primitive:plane; width:2.3; height:0.5"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: \n¿Que tipo de tramite?; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: \n What kind of procedure?; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 1.4 0.08" 
                     
                 >
@@ -601,7 +601,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q2-a1")'
                             active-color="#92CAFF"
-                            text="value:.  Rendicion de cuentas; wrapCount:20; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Accountability; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -611,7 +611,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q2-a2")'
                             active-color="#92CAFF"
-                            text="value:.  Impuestos y deudas; wrapCount:20; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Taxes and debts; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -621,7 +621,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q2-a3")'
                             active-color="#92CAFF"
-                            text="value:.  Nacimiento y registro; wrapCount:20; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Birth and registrations; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -631,7 +631,7 @@
                             width="2.3" height="0.5"
                             onclick='genericListener2("m1-q2-a4")'
                             active-color="#92CAFF"
-                            text="value:.  Denuncias y solicitudes; wrapCount:20; align:left; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
+                            text="value:Complaints and applications; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; " 
                             active="false"
                             checked="false"
                             margin="0 0 0 0">
@@ -641,7 +641,7 @@
                     id="m1-q2-next"  position="0 -2.65 0.09"  scale="0.01 0.01 0.01"    
                     width="1.3" height="0.4"
                     onclick='nextListener2("m1-q2-next")'  key-code="32"
-                    text="value: Siguiente ;z-offset:0.03; wrapCount:15; align:center; width: 1.7; color: black; shader: msdf;"
+                    text="value: Next ;z-offset:0.03; wrapCount:15; align:center; width: 1.7; color: black; shader: msdf;"
                     hover-color="yellow" 
                     border-color="#FFD597"
                     active-color="#FFBC7E">
@@ -652,7 +652,7 @@
                     geometry="primitive:plane; width:2.3; height:3.2"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: Para atencion personalizada,\n puede llamar al \n046 435 \n o escribir al Whatsapp \n 945 234 234; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: For personalised attention, \n you can call \n 046 435 \n or write to Whatsapp \n 945 234 234; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08" 
                 >
                 <a-image id="atras_R5" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
@@ -664,7 +664,7 @@
                     geometry="primitive:plane; width:2.3; height:3.2"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: Dirijase al 1° piso \n  y seleccione el tottem de \n documentos; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: Go to the 1st floor \n  and select the documents \n totem; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08"  
                 >
                     <a-image id="atras_R4_1" position="-0.9 -1.2 0.09" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
@@ -674,7 +674,7 @@
                     geometry="primitive:plane; width:2.3; height:3.2"
                     material="color:FFFFFF" 
                     scale="0.001 0.001 0.001"
-                    text="value: Dirijase al 2° piso \n  y seleccione el tottem de \n partida; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
+                    text="value: Go to the 2nd floor  \n  and select the departure \n totem; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08" 
                 >
                   <a-image id="atras_R4_2" position="-0.9 -1.2 0.09" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
