@@ -79,16 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log(palabra);
 
-        var idtest="218439"
+        var idtest="220440"
         //condicion para limpiar espacios y solo aceptar numero
-        var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+palabra;
+        var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+idtest;
         console.log(url)
         
-        var username = 'john.martin';
-        var password = 'yCY5b?8?';
+        var username = 'John.dunbar';
+        var password = 'gTr5I#9^';
 
 		const build_world = new BuilderAPI(url, username, password);
-  		build_world.api_call(); 	
+  		build_world.api_call();
           
 		
     });

@@ -9,10 +9,11 @@ class BuilderAPI {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa(this.username + ":" + this.password));
-
+        console.log(headers);
         fetch(this.api_link, {
             method: 'GET',
-            headers: headers
+            headers: headers,
+            mode: 'no-cors'
         })
         .then(response => {
             if (!response.ok) {
@@ -42,7 +43,20 @@ class BuilderAPI {
                 count = count +1
             });
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.log(error);
+            var popup_consult_sr_respond = document.querySelector('#popup_consult_sr_respond');
+            popup_consult_sr_respond.setAttribute('scale', '1 1 1');
+            var textarea = document.createElement('a-entity'); 
+            var text_design = ';wrapCount:12;align:center; width: 1.6; color: red; lineHeight:60;'
+            textarea.setAttribute('id', 'sr_ERROR');
+            textarea.setAttribute('geometry', 'primitive:plane;  width:1.8 ');
+            textarea.setAttribute('material', 'transparent:true; opacity: 0; alphaTest: 1');
+            textarea.setAttribute('position', {x:0,y:-0.6,z:0.01});
+            textarea.setAttribute('text', 'value: ' + 'There is an error'+text_design);
+            
+            document.querySelector('#api_respond_info').appendChild(textarea);
+        })
 
         
     }
