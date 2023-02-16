@@ -691,13 +691,14 @@
           window.onload = function() {
             var idtest="220440"
             //condicion para limpiar espacios y solo aceptar numero
+            var url_1 ='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/SR220440';
             var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+idtest;
             console.log(url)
             
             var username = 'John.dunbar';
             var password = 'gTr5I#9^';
 
-            const build_world = new BuilderAPI(url, username, password);
+            const build_world = new BuilderAPI(url_1, username, password);
             build_world.api_call();
           }
         </script>
