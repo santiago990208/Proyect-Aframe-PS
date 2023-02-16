@@ -699,7 +699,33 @@
             var password = 'gTr5I#9^';
 
             const build_world = new BuilderAPI(url_1, username, password);
-            build_world.api_call();
+            // build_world.api_call();
+          
+          
+            const request = new Request(url);
+            const urlObject = new URL(url);
+            const host = urlObject.hostname;
+            const authorization = 'Basic ' + btoa(username + ":" + password); 
+
+            fetch(request, {
+              method: 'GET',
+              headers: {
+                'Authorization': authorization,
+                'Host': host
+              }
+            })
+              .then(response => {
+                if (response.ok) {
+                  return response.text();
+                }
+                throw new Error('Network response was not ok.');
+              })
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+              });
           }
         </script>
   </body>
