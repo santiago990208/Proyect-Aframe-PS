@@ -6,10 +6,16 @@ class BuilderAPI {
       }
   
     api_call(){
+        
+        console.log('HELLO WORLD');
+        console.log(this.api_link);
+        console.log(this.username);
+        console.log(this.password);
+
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa(this.username + ":" + this.password));
-        console.log(headers);
+        
         fetch(this.api_link, {
             method: 'GET',
             headers: headers,

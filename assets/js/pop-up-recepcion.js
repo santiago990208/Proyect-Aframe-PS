@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+idtest;
         console.log(url)
         
-        var username = 'John.dunbar';
+        var username = 'John.Dunbar';
         var password = 'gTr5I#9^';
 
 		const build_world = new BuilderAPI(url, username, password);
