@@ -101,7 +101,7 @@
             position="0 0.8 30" rotation="0 0 0" >
             <a-entity id="head"
               camera="near:0.01;"
-              position="0 1.65 0">
+              position="0 2.65 0">
               <a-cursor position="0 0 -0.5"
                 geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
                 material="opacity: 0.6; shader: flat" 
@@ -267,15 +267,18 @@
             </a-box>
 
             <!-- puerta -->
-            <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" link-click="href: reception.html"></a-entity>
-            <a-plane id="vidrio-puerta"
-            rotation="-180 180 180"
-            position="0 4 8.6"
-            width="4"
-            height="8"
-            src="#inside-reception"
-            link-click="href: reception.html"
-            ></a-plane>
+            <!-- <a-box link-click="href: reception.html" position="0 4 9.5" color="transparent" rotation="0 0 180" width="4" height="8" ></a-box> -->
+              <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
+              <a-box id="vidrio-puerta"
+              rotation="-180 180 180"
+              position="0 4 8.6"
+              width="4"
+              height="8"
+              src="#inside-reception"
+              link-click="href: reception.html"
+              ></a-box>
+            
+            
 
             <!-- letrero mineducacion -->
             <a-entity>

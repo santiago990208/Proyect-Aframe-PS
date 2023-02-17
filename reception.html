@@ -62,7 +62,7 @@
               <img id="sofa-src" src="assets/images/textures/sofas.png"  crossorigin="anonymous"/>
               <img id="asensores" src="assets/images/textures/asesnsores.png"  crossorigin="anonymous"/>
               <!-- UI -->
-              <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
+              <img id="escudo-colombia" src="assets/images/ui/Oracle-Symbol.png"  crossorigin="anonymous"/>
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
@@ -77,7 +77,7 @@
               <img id="micro" src="assets/images/textures/microfono.png" crossorigin="anonymous">
 
               <!-- Videos -->
-              <a-video id="video-pantalla" src="assets/videos/video-test.mp4" width="16" height="9" crossorigin="anonymous"></a-video>
+              <a-video id="video-pantalla" src="assets/videos/TransformingthePublicSector.mp4" width="16" height="9" crossorigin="anonymous"></a-video>
 
               <!-- Sillas de espera -->
               <a-gltf-model id="sillas-espera-glft" shadow="receive:true;cast:true;" src="assets/objects/sillas-espera.glb"  crossorigin="anonymous"></a-gltf-model>
@@ -125,7 +125,7 @@
             position="0 0.8 19" rotation="0 0 0" >
             <a-entity id="head"
               camera="near:0.01;"
-              position="0 1.65 0">
+              position="0 2.65 0">
               <a-cursor position="0 0 -0.5"
                 geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
                 material="opacity: 0.6; shader: flat" 
@@ -305,9 +305,9 @@
               <a-plane rotation="-90 0 0" width="1" height="1" position="0 0 0" class="navmesh-hole" visible="false"></a-plane>
               <a-entity mixin="totem-base marmol-negro" position="0 0 0"  rotation="0 0 0"> </a-entity>
               <a-entity id="centro_informacion_totem" mixin="totem-pantalla " position="0 1.9 0"  rotation="-60 0 0"> </a-entity>
-              <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="0 3 0" >
+              <a-entity id="centro_informacion_popup" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="1 1 1" position="0 3 0" >
                   <a-image id="mensaje" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
-                  <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-image>
+                  <a-image id="continuar"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" ></a-image>
                   <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
               </a-entity>
             </a-entity>
@@ -335,12 +335,12 @@
                       text="value: Enter the request code\n.; wrapCount:12; align:center; width: 1.6; color: black; lineHeight:50;"
                       >
                     </a-entity>
-                    <a-circle id="microfono1" color="#FFFFFF" radius="0.35" position="0 0.15 0.02" src="#micro"></a-circle>
+                    <a-circle id="microphoneSR" color="#FFFFFF" radius="0.35" position="0 0.15 0.02" src="#micro"></a-circle>
                     <a-entity id="Text1" geometry="primitive:plane; height:0.35; width:1.2"
                               material="color:#94BCF9" 
                               position="0  -0.4 0.1" text="value:-;wrapCount:12; align:center; width: 1.6; color: black; lineHeight:60;"
                     ></a-entity>
-                    <a-entity id="boton_consultar" geometry="primitive:plane; height:0.280; width:0.8"
+                    <a-entity id="consult_button" geometry="primitive:plane; height:0.280; width:0.8"
                               material="color:#FFC195" 
                               position="0  -0.8 0.1" text="value:Consult;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;"
                     ></a-entity>
@@ -363,6 +363,7 @@
                 
                 
               </a-entity>
+
               <!-- Counter para MAPA -->
               <a-entity id="counter_map" position="-18 0 0" rotation="0 -90 0" >
                 <a-entity mixin="escritorio-counter" position="0 0 0" scale="2 2 2" rotation="0 180 0">
@@ -380,20 +381,21 @@
                               position="0  2.6 -0.5" text="value:Incidents in my community;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
                 ></a-entity>
               </a-entity>
+
               
             </a-entity>
 
-            <a-entity id="pantalla-izquierda" position="-19.9 4 0" rotation="0 90 0">
-                  <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
-                  <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+            <a-entity id="pantalla-izquierda" position="-19.9 7 0" rotation="0 90 0">
+                  <a-entity mixin="pantalla"  scale="2 2 0" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla"   scale="2 2 0" position="0 0 0"></a-entity>
             </a-entity>
-            <a-entity id="pantalla-derecha" position="19.9 4 0" rotation="0 -90 0">
-                  <a-entity mixin="pantalla" position="0 0 0.1" ></a-entity>
-                  <a-entity mixin="border-pantalla"  position="0 0 0"></a-entity>
+            <a-entity id="pantalla-derecha" position="19.9 7 0" rotation="0 -90 0">
+                  <a-entity mixin="pantalla"  scale="2 2 0" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla"   scale="2 2 0" position="0 0 0"></a-entity>
             </a-entity>
-            <a-entity id="pantalla-frontal" rotation="-180 180 180" position="0 6 -19.9">
-                  <a-entity mixin="pantalla" scale="2 2 0" position="0 0 0.1" ></a-entity>
-                  <a-entity mixin="border-pantalla" scale="2 2 0" position="0 0 0"></a-entity>
+            <a-entity id="pantalla-frontal" rotation="-180 180 180" position="0 12 -19.9">
+                  <a-entity mixin="pantalla" scale="3 2 0" position="0 0 0.1" ></a-entity>
+                  <a-entity mixin="border-pantalla" scale="3 2 0" position="0 0 0"></a-entity>
             </a-entity>
 
             <a-entity id="sillas-de-espera" position="0 0 0">
@@ -692,20 +694,5 @@
 
           </a-entity>
         </a-scene>
-        <script>
-          window.onload = function() {
-            var idtest="220440"
-            //condicion para limpiar espacios y solo aceptar numero
-            var url_1 ='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/SR220440';
-            var url='https://fa-eset-dev4-saasfademo1.ds-fa.oraclepdemos.com/crmRestApi/resources/11.13.18.05/serviceRequests/'+"SR"+idtest;
-            console.log(url)
-            
-            var username = 'John.dunbar';
-            var password = 'gTr5I#9^';
-
-            const build_world = new BuilderAPI(url_1, username, password);
-            build_world.api_call();
-          }
-        </script>
   </body>
 </html>
