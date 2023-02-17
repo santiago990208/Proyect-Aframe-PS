@@ -61,10 +61,10 @@
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
               <img id="inside-reception" src="assets/images/textures/inside-reception.png"  crossorigin="anonymous"/>
-              <img id="letrero-entrada" src="assets/images/ui/letrero-entrada.png"  crossorigin="anonymous"/>
-              <img id="letrero-mineducacion" src="assets/images/ui/letrero-mineducacion.png"  crossorigin="anonymous"/>
+              <img id="oracle-ps" src="assets/images/ui/oracle-ps.png"  crossorigin="anonymous"/>
               <img id="mapa-metaverso" src="assets/images/ui/mapa-metaverso.png"  crossorigin="anonymous"/>
               <img id="oracle-logo" src="assets/images/ui/oracle-logo.png"  crossorigin="anonymous"/>
+              <img id="oracle-symbol" src="assets/images/ui/oracle-symbol.png"  crossorigin="anonymous"/>
 
               <!-- information images -->
 
@@ -270,7 +270,7 @@
                 <a-plane rotation="-90 0 0" width="17.5" height="17.5" position="0 -10 0" class="navmesh-hole" visible="false"></a-plane>
             </a-box>
 
-            <!-- puerta -->
+            <!-- door -->
             <a-entity mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" link-click="href: reception.html"></a-entity>
             <a-plane id="vidrio-puerta"
             rotation="-180 180 180"
@@ -281,14 +281,14 @@
             link-click="href: reception.html"
             ></a-plane>
 
-            <!-- letrero mineducacion -->
+            <!-- oracle public sector sign -->
             <a-entity>
-            <a-image id="letrero-mineducacion"
+            <a-image id="oracle-ps"
             rotation="0 0 0"
-            position="0 17 10"
+            position="0 23 10"
             width="14"
             height="5"
-            src="#letrero-mineducacion"
+            src="#oracle-ps"
             ></a-image>
 
             <!-- oracle welcome sign -->
@@ -301,22 +301,14 @@
             src="#oracle-logo"
             ></a-image>
 
-            <!-- Marco letrero mineducacion -->
-            <a-box  color="#212121" 
-            width="8" height="7" depth="0.019" scale="2 2 4"
-            position="0 21 9" rotation="0 0 0" side="double">
-            </a-box>
-
-            <!-- letrero entrada -->
+            <!-- oracle symbol sign -->
             <a-entity>
-            <a-image id="letrero-entrada"
+            <a-image id="oracle-symbol"
             rotation="0 0 0"
-            position="0 23 10"
-            width="14"
-            height="5"
-            src="#letrero-entrada"
+            position="0 16.5 10"
+            scale="9 9 9"
+            src="#oracle-symbol"
             ></a-image>
-
 
             <!-- parasoles -->
 
