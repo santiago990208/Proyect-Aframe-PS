@@ -40,14 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const popup_consult_sr_respond = document.querySelector('#popup_consult_sr_respond');
 
     if (close_consult_sr_respond) close_consult_sr_respond.addEventListener('click', function (e) {
+        console.log('hello');
         popup_consult_sr_respond.setAttribute('scale', '0 0 0');
         var api_respond_info = document.querySelector('#api_respond_info');
         api_respond_info.innerHTML = "";
     });
     
     //Grabación de voz 1
-    const grabar = document.querySelector('#microfono1');
-    const texto = document.querySelector('#Text1');
+    const record = document.querySelector('#microphoneSR');
+    const text_code = document.querySelector('#Text1');
 
     let recognition=new webkitSpeechRecognition();
     recognition.lang='es-mx';
@@ -57,27 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
     recognition.onresult = (event) => {
         const results=event.results; 
         const frase= results[results.length-1][0].transcript;
-        texto.setAttribute('text', 'value:'+frase);
+        text_code.setAttribute('text', 'value:'+frase);
     }
 
-    if (grabar) grabar.addEventListener('click', function (e) {
+    if (record) record.addEventListener('click', function (e) {
         console.log('Start recording');
         recognition.start();
     })
     //Fin grabación
-    const consultar = document.querySelector('#boton_consultar');
-    if (consultar) consultar.addEventListener('click', function (e) {
+    const consult = document.querySelector('#consult_button');
+    if (consult) consult.addEventListener('click', function (e) {
             
-        const consulta=texto.getAttribute('text');
+        const consulta=text_code.getAttribute('text');
         var value=Object.values(consulta)[0]
-        var palabra='';
+        var code='';
         for (i in value){
             if(value[i]!==' '){
-                palabra+=value[i]
+                code+=value[i]
             }
         }
         
-        console.log(palabra);
+        console.log(code);
 
         var idtest="220440"
         //condicion para limpiar espacios y solo aceptar numero
