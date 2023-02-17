@@ -319,10 +319,10 @@
                     <a-plane rotation="-90 0 0" width="5" height="5" position="0 -0.1 0" class="navmesh-hole" visible="false"></a-plane>
                 </a-entity>
                 <!-- Logo para consultas -->
-                <a-entity id="logo_consulta1" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
+                <a-entity id="logo_consulta1" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0.5" scale="1.1 1.25 1.1" 
                   animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
                 <!-- Mensaje popup -->
-                <a-entity id="popup_consulta1" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0" rotation="0 -90 0" scale="0 0 0">
+                <a-entity id="popup_consulta1" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0.5" rotation="0 -90 0" scale="0 0 0">
                   <!-- Imagen de cerrar -->
                   <a-image id="cerrar_consulta1" position="2.01 0.9 -1" scale="1.5 1.5 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                   
@@ -345,11 +345,11 @@
                     ></a-entity>
                   </a-entity>
                 </a-entity> 
-                <a-entity id="popup_consult_sr_respond" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 1" rotation="0 -90 0" scale="0 0 0">
+                <a-entity id="popup_consult_sr_respond" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0.7" rotation="0 -90 0" scale="0 0 0">
                   <!-- Imagen de cerrar -->
-                  <a-image id="close_consult_sr_respond" position="2.01 0.9 -1" scale="1.5 1.5 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
+                  <a-image id="close_consult_sr_respond" position="2.01 1.3 -1.2" scale="1.5 1.5 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                   
-                  <a-entity geometry="primitive:plane; height:3; width:2.8" material="color:#f2e68c" position="2  0 0" scale="1 1 1" rotation="0 90 0 ">
+                  <a-entity geometry="primitive:plane; height:3; width:2.8" material="color:#FFEBCC" position="2  0 0" scale="1 1 1" rotation="0 90 0 ">
                     <a-entity 
                       geometry="primitive:plane; width:2.3"  position="0  0.6 0.01"
                       material="transparent:true; opacity: 0; alphaTest: 1" 
@@ -362,19 +362,19 @@
                 
                 
               </a-entity>
-              <!-- Counter para generar -->
-              <!-- <a-entity id="counter_inspeccion" position="-18 0 0" rotation="0 -90 0" >
-                <a-entity mixin="escritorio-counter" position="0 0 0" scale="2 2 2">
+              <!-- Counter para MAPA -->
+              <a-entity id="counter_map" position="-18 0 0" rotation="0 -90 0" >
+                <a-entity mixin="escritorio-counter" position="0 0 0" scale="2 2 2" rotation="0 180 0">
                     <a-plane rotation="-90 0 0" width="5" height="5" position="0 -0.1 0" class="navmesh-hole" visible="false"></a-plane>
                 </a-entity>
-                <a-entity id="logo_consulta2" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
+                <a-entity id="logo_map" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 -0.5" scale="1.1 1.25 1.1" 
                   animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
-                <a-entity id="popup_inspeccion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
-                  <a-image id="pop_inspeccion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
-                  <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                  <a-image id="continuar_inspeccion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
+                <a-entity id="popup_map" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+                  <a-image id="pop_map" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
+                  <a-image id="cerrar_map" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
+                  <a-image id="continuar_map" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
                 </a-entity>  
-              </a-entity> -->
+              </a-entity>
               
             </a-entity>
 
