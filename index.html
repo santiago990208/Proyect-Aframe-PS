@@ -52,7 +52,7 @@
               <img id="texturacielo" src="assets/images/textures/cielo.jpg"  crossorigin="anonymous"/>
               <img id="texturatecho-parasol" src="assets/images/textures/techo-parasol.jpg"  crossorigin="anonymous"/>
               <img id="texturapiso-madera" src="assets/images/textures/piso-madera.jpg"  crossorigin="anonymous"/>
-              <img id="texturapared" src="assets/images/textures/pared.jpg"  crossorigin="anonymous"/>
+              <img id="walltexture" src="assets/images/textures/wall.jpg"  crossorigin="anonymous"/>
               <img id="texturastone" src="assets/images/textures/stone.png"  crossorigin="anonymous"/>
 
 
@@ -86,6 +86,7 @@
               <a-gltf-model id="matera-glft" shadow="receive:true;cast:true;" src="assets/objects/matera.glb"  crossorigin="anonymous"></a-gltf-model>
               <a-gltf-model id="sombrillas-izquierda-edificio-glft" shadow="receive:true;cast:true;" src="assets/objects/sombrillas-izquierda-edificio.glb"  crossorigin="anonymous"></a-gltf-model>
               <a-gltf-model id="welcome-glft" shadow="receive:true;cast:true;" src="assets/objects/welcome.glb"  crossorigin="anonymous"></a-gltf-model>
+              <a-gltf-model id="f1car-glft" shadow="receive:true;cast:true;" src="assets/objects/red_bull_racing.glb"  crossorigin="anonymous"></a-gltf-model>
 
 
               <!-- Sonidos reception de pajaros-->
@@ -178,6 +179,8 @@
                 <a-entity gltf-model="#tree-glft"  position="-30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
                 <a-entity gltf-model="#lampara-puerta-principal-glft"  position="0 11 9" rotation="0 -90 0" scale="0.1 0.1 0.1" 
                 sound="src:#sonido-pajaros"; on: click; volumen: 4; refDistance: 1; rolloffFactor: 4></a-entity>
+                <a-entity gltf-model="#f1car-glft"  position="13 12.5 0" rotation="20 360 0" scale="0.08 0.08 0.08"></a-entity>
+                <a-entity gltf-model="#f1car-glft"  position="-13 12.5 0" rotation="20 360 0" scale="0.08 0.08 0.08"></a-entity>
                 <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 15" rotation="0 -90 0" scale="4 4 4"></a-entity>
                 <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="-15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
                 <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
@@ -266,7 +269,7 @@
             width="17"
             height="40"
             depth="17"
-            src="#texturapared">
+            src="#walltexture">
                 <a-plane rotation="-90 0 0" width="17.5" height="17.5" position="0 -10 0" class="navmesh-hole" visible="false"></a-plane>
             </a-box>
 
@@ -316,7 +319,7 @@
             <!-- parasoles -->
 
             <a-box id="parasoles-azules"
-            rotation="-90 0 0"
+            rotation="-70 0 0"
             position="0 12 0"
             width="35"
             height="16.9"
