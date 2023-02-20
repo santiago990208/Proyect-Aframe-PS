@@ -53,8 +53,10 @@
               <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
       
               <!-- Textures -->
-              <img id="texturapiso" src="assets/images/textures/piso.png"  crossorigin="anonymous"/>
-              <img id="texturapared" src="assets/images/textures/pared.jpg"  crossorigin="anonymous"/>
+              <img id="floortexture" src="assets/images/textures/floor.jpg"  crossorigin="anonymous"/>
+              <img id="floor_norm" src="assets/images/textures/floor-normal.jpg"  crossorigin="anonymous"/>
+              <img id="red-wall" src="assets/images/textures/red-wall.jpg"  crossorigin="anonymous"/>
+              <img id="walltexture" src="assets/images/textures/wall.jpg"  crossorigin="anonymous"/>
               <img id="texturatecho" src="assets/images/textures/techo.png"  crossorigin="anonymous"/>
               <img id="fondo-puerta" src="assets/images/textures/fondo-puerta.png"  crossorigin="anonymous"/>
               <img id="ventana-recepcion" src="assets/images/textures/ventana-recepcion.png"  crossorigin="anonymous"/>
@@ -176,7 +178,7 @@
             <a-sphere data-left="thumb-tip" radius="0.004" visible="false" physx-body="type: kinematic;"></a-sphere>
           </a-entity>
 
-          <!-- Recepcion -->
+          <!-- Reception -->
           <a-entity id="estructura" position="0 0 0">
             <a-plane id="piso"
             class="navmesh"
@@ -185,7 +187,8 @@
             width="39.5"
             height="39.5"
             repeat="5 5"
-            src="#texturapiso"
+            src="#floortexture"
+            normal-floor="#floor_norm" normal-texture-repeat="1 1" normal-scale="1 -2"
             ></a-plane>
         
             <a-plane id="techo"
@@ -197,14 +200,24 @@
             repeat="2 2"
             shadow
             ></a-plane>
+
+            <a-plane id="red-decoration-north-wall"
+            rotation="-180 180 180"
+            position="0 17.5 -19.8"
+            width="40"
+            height="1"
+            color="red"
+            opacity="10"
+            ></a-plane>
         
             <a-plane id="pared-norte"
             rotation="-180 180 180"
             position="0 6 -20"
             width="40"
             height="40"
-            src="#texturapared"
+            src="#walltexture"
             ></a-plane>
+
             <a-plane id="asensor-1"
             rotation="-180 180 180"
             position="10 3 -19.9"
@@ -213,6 +226,7 @@
             src="#asensores"
             link-click="href:office.html"
             ></a-plane>
+
             <a-plane id="asensor-2"
             rotation="-180 180 180"
             position="-10 3 -19.9"
@@ -221,13 +235,22 @@
             src="#asensores"
             link-click="href:office.html"
             ></a-plane>
+
+            <a-plane id="red-decoration-south-wall"
+            rotation="0 180 0"
+            position="0 17.5 19.8"
+            width="40"
+            height="1"
+            color="red"
+            opacity="10"
+            ></a-plane>
             
             <a-plane id="pared-sur"
             rotation="0 180 0"
             position="0 6 20"
             width="40"
             height="40"
-            src="#texturapared"
+            src="#walltexture"
             ></a-plane>
             <a-entity mixin="puerta-entrada" position="0 4 19.9" rotation="0 -90 0" scale="5 5 4" link-click="href: index.html">
               <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
@@ -248,6 +271,7 @@
             height="6"
             src="#poster-covid"
             ></a-plane>
+
             <a-plane id="poster-izquierdo"
             rotation="0 180 0"
             position="-12 4 19.9"
@@ -256,13 +280,21 @@
             src="#poster-frontera"
             ></a-plane>
 
-            
+            <a-plane id="red-decoration-right-wall"
+            rotation="0 -90 0"
+            position="19.8 17.5 0"
+            width="40"
+            height="1"
+            color="red"
+            opacity="10"
+            ></a-plane>
+
             <a-plane id="pared-derecha"
             rotation="0 -90 0"
             position="20 6 0"
             width="40"
             height="40"
-            src="#texturapared"
+            src="#walltexture"
             ></a-plane>
             <a-plane id="ventana-1-derecha"
             rotation="0 -90 0"
@@ -278,13 +310,22 @@
             height="6"
             src="#ventana-recepcion"
             ></a-plane>
+
+            <a-plane id="red-decoration-left-wall"
+            rotation="0 90 0"
+            position="-19.8 17.5 0"
+            width="40"
+            height="1"
+            color="red"
+            opacity="10"
+            ></a-plane>
           
             <a-plane id="pared-izquierda"
             rotation="0 90 0"
             position="-20 6 0"
             width="40"
             height="40"
-            src="#texturapared"
+            src="#walltexture"
             ></a-plane>
             <a-plane id="ventana-1-izquierda"
             rotation="0 90 0"
