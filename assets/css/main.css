@@ -1,0 +1,38 @@
+#aframe-scene {
+    display: none;
+}
+#logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #232323;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loading-spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-top-color: #ec3737;
+    animation: spin 1s linear infinite;
+  }
+  
+  .loading-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
