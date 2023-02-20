@@ -7,30 +7,15 @@
         <meta property="og:title" content="Public Sector Oficina Tramites" />
         <meta name="description" content="Public Sector Oficina Tramites">
         <meta name="author" content="Santiago Botero">
-
+        <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-        <!-- librerias para phisycs y que todo funcione -->
-         <script>window.module = {exports:{}}</script> <!--Dirty hack to get the sphere collider loading :-( -->
-        <script src="assets/js/physics-simulator.js"></script>
-        <script src="assets/js/pop-up-oficina.js"></script>
-        <script>
-        // WebXR requires https: to work so ensure redirected if needed.
-        if (location.hostname !== 'localhost' && window.location.protocol === 'http:') window.location.protocol = 'https:';
-        </script>
-        <!-- click links redirrection -->
-        <script>
-        AFRAME.registerComponent("link-click", {
-          init: function() {
-            this.el.addEventListener("click", (e) => {
-                console.log(this.data)
-                window.open(this.data.href, '_blank').focus();
-            })
-          }
-        })
-        </script>
-
+        
     </head>
     <body>
+      <div id="logo-container">
+        <div class="loading-spinner"></div>
+      </div>
+      <div id="aframe-scene">
         <a-scene reflection="directionalLight:#dirlight;" renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;">
           <a-assets>
               <!-- OCOLUS CONTROLS HANDS ASSETS -->
@@ -92,7 +77,8 @@
             <a-entity id="head"
               camera="near:0.01;"
               position="0 2.65 0">
-              <a-cursor position="0 0 -0.5"
+              <a-cursor id="mainCursor"
+                position="0 0 -0.5"
                 geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
                 material="opacity: 0.6; shader: flat" 
                 cursor="rayOrigin: mouse">
@@ -194,7 +180,7 @@
             width="8"
             height="7"
             src="#asensores"
-            link-click="href: reception.html"
+            link-click=" reception.html"
             ></a-plane>
             <a-plane id="asensor-2"
             rotation="0 180 0"
@@ -202,7 +188,7 @@
             width="8"
             height="7"
             src="#asensores"
-            link-click="href: reception.html"
+            link-click=" reception.html"
             ></a-plane>
             
             <a-plane id="pared-derecha"
@@ -264,7 +250,7 @@
               <a-entity id="popup_reportar" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_reportar" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_reportar" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_reportar" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                <a-image id="continuar_reportar" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
+                <a-image id="continuar_reportar" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click=" https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
               </a-entity>  
             </a-entity>
 
@@ -277,7 +263,7 @@
               <a-entity id="popup_inspeccion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_inspeccion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                <a-image id="continuar_inspeccion" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
+                <a-image id="continuar_inspeccion" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click=" href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
               </a-entity>  
             </a-entity>
 
@@ -290,7 +276,7 @@
               <a-entity id="popup_covid" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_covid" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_covid" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_covid" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                <a-image id="continuar_covid" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
+                <a-image id="continuar_covid" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click=" href: https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
               </a-entity>  
             </a-entity>
 
@@ -303,12 +289,23 @@
               <a-entity id="popup_certificado" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_certificado" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_certificado" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_certificado" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                <a-image id="continuar_certificado" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
+                <a-image id="continuar_certificado" position="0.1 -0.3 -0.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click=" href: https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
               </a-entity>  
             </a-entity>
 
           </a-entity>
         </a-scene>
-  
+      </div>
+      <script defer type="module">
+        import { build_enviroment } from "./assets/js/main.js";
+        // build_office();
+        window.onload = function() {
+          document.getElementById('aframe-scene').style.display = 'block';
+          setTimeout(function() {
+            var logo = document.getElementById('logo-container');
+            logo.style.display = 'none';
+          }, 5000);
+        }
+      </script>
   </body>
 </html>

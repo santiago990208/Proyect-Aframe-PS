@@ -14,7 +14,6 @@
     <body>
       <div id="logo-container">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Be prepare for something new</div>
       </div>
       <div id="aframe-scene">
         <a-scene  loading-screen="enabled:false;" reflection="directionalLight:#dirlight;" renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;">
@@ -51,6 +50,7 @@
               <img id="mapa-metaverso" src="assets/images/ui/mapa-metaverso.png"  crossorigin="anonymous"/>
               <img id="oracle-logo" src="assets/images/ui/oracle-logo.png"  crossorigin="anonymous"/>
               <img id="oracle-symbol" src="assets/images/ui/oracle-symbol.png"  crossorigin="anonymous"/>
+              <img id="redbull-marketing" src="assets/images/ui/redbull-marketing.png"  crossorigin="anonymous"/>
 
               <!-- information images -->
 
@@ -97,12 +97,12 @@
             <a-entity data-left="index-finger-tip"  mixin="blink" blink-controls="snapTurn:false;startEvents:pose_point_fuseShort;endEvents:pose_point_fuseLong;cancelEvents:pose_cancel_point;"></a-entity>
             <!-- The direction hands are facing, we will also attach labels to show the currently detected pose or controller button -->
             <!-- These also do teleportaion for Blink controls in VR -->
-            <!-- <a-entity data-right="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
+            <a-entity data-right="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
               <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
             </a-entity>
             <a-entity data-left="ray" mixin="blink" html-pointer="" raycaster="objects:[html];far:0.3;showLine:false;lineColor:black;">
               <a-entity position="0 0 -0.22" visible="false" class="pose-label" text="value: Hello World; align: center;"></a-entity>
-            </a-entity> -->
+            </a-entity>
             <!-- These get drawn towards grabable objects, moving the whole hand and the attached elements-->
             <a-entity id="left-magnet" data-left="grip"  data-magnet="magnet-left"  grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#left-no-magnet;"></a-entity>
             <a-entity id="right-magnet" data-right="grip" data-magnet="magnet-right" grab-magnet-target="startEvents:squeezestart,pose_fist;stopEvents:pose_flat_fuseShort,squeezeend;noMagnetEl:#right-no-magnet;"></a-entity>
@@ -141,78 +141,60 @@
 
               <!-- Colocar arboles, decoraciones, fuente.... -->
               <a-entity id="decoration-world">
-                  <a-entity gltf-model="#tree-glft"  position="20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
+
+                  <!-- <a-entity gltf-model="#tree-glft"  position="20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity> -->
                   <a-entity gltf-model="#tree-glft"  position="30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
                   <a-entity gltf-model="#tree-glft"  position="-20 -1 10" rotation="0 -90 0" scale="20 20 20"></a-entity>
                   <a-entity gltf-model="#tree-glft"  position="-30 -1 10" rotation="0 -90 0" scale="25 25 25"></a-entity>
-                  <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 15" rotation="0 -90 0" scale="4 4 4"></a-entity>
-                  <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="-15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
-                  <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
-                  <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="-15 -1 15" rotation="0 -90 0" scale="4 4 4"></a-entity>
-                  <a-entity gltf-model="#fuente-entrada-glft"  position="12 0.4 32" rotation="0 -90 0" scale="1 1 1"></a-entity>
-                  <a-entity gltf-model="#fuente-entrada-glft"  position="-12 0.4 32" rotation="0 -90 0" scale="1 1 1"></a-entity>
-                  <a-entity gltf-model="#welcome-glft"  position="0 1 30" rotation="0 180 0" scale="0.01 0.01 0.01"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="8 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-8 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="6 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-6 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="4 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-4 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="1.5 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-1.5 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="10 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-10 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="12 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-12 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
-                  <a-entity gltf-model="#mesa-derecha-edificio-glft"  position="13 0.5 4" rotation="0 -90 0" scale="1.5 1.5 1.5"></a-entity>
-                  <a-entity gltf-model="#mesa-derecha-edificio-glft"  position="13 0.5 -4" rotation="0 -90 0" scale="1.5 1.5 1.5"></a-entity>
-                  <a-entity gltf-model="#banca-derecha-edificio-glft"  position="10 0.5 4" rotation="0 90 0" scale="3.5 3.5 3.5"></a-entity>
-                  <a-entity gltf-model="#banca-derecha-edificio-glft"  position="10 0.5 -4" rotation="0 90 0" scale="3.5 3.5 3.5"></a-entity>
-                  <a-entity gltf-model="#banca-derecha-edificio-glft"  position="16 0.5 4" rotation="0 -90 0" scale="3.5 3.5 3.5"></a-entity>
-                  <a-entity gltf-model="#banca-derecha-edificio-glft"  position="16 0.5 -4" rotation="0 -90 0" scale="3.5 3.5 3.5"></a-entity>
-                  <a-entity gltf-model="#matera-glft"  position="10 0.8 9" rotation="0 -90 0" scale="0.3 0.3 0.3"></a-entity>
-                  <a-entity gltf-model="#matera-glft"  position="10 0.8 -9" rotation="0 -90 0" scale="0.3 0.3 0.3"></a-entity>
-                  <a-entity gltf-model="#matera-glft"  position="16 0.8 9" rotation="0 90 0" scale="0.3 0.3 0.3"></a-entity>
-                  <a-entity gltf-model="#matera-glft"  position="16 0.8 -9" rotation="0 90 0" scale="0.3 0.3 0.3"></a-entity>
-                  <a-entity gltf-model="#mesa-izquierda-edificio-glft"  position="-13 1.2 4" rotation="0 90 0" scale="0.7 0.7 0.7"></a-entity>
-                  <a-entity gltf-model="#mesa-izquierda-edificio-glft"  position="-13 1.2 -4" rotation="0 90 0" scale="0.7 0.7 0.7"></a-entity>
-                  <a-entity gltf-model="#sombrillas-izquierda-edificio-glft"  position="-13 0 -4" rotation="0 90 0" scale="2 2 2"></a-entity>
-                  <a-entity gltf-model="#sombrillas-izquierda-edificio-glft"  position="-13 0 4" rotation="0 90 0" scale="2 2 2"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="17 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="16 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="15 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="14 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="13 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="12 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="11 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="10 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="9 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="8 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="7 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="6 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="5 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="4 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="3 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="2 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-17 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-16 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-15 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-14 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-13 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-12 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-11 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-10 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-9 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-8 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-7 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-6 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-5 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-4 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-3 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-                  <a-entity gltf-model="#jasmine-glft"  position="-2 -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
 
-                  
-                  
+                  <a-entity id="anterior">
+                    <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="-15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
+                    <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 -15" rotation="0 90 0" scale="4 4 4"></a-entity>
+                    <!-- <a-entity gltf-model="#mesa-derecha-edificio-glft"  position="13 0.5 4" rotation="0 -90 0" scale="1.5 1.5 1.5"></a-entity>
+                    <a-entity gltf-model="#mesa-derecha-edificio-glft"  position="13 0.5 -4" rotation="0 -90 0" scale="1.5 1.5 1.5"></a-entity>
+                    <a-entity gltf-model="#banca-derecha-edificio-glft"  position="10 0.5 4" rotation="0 90 0" scale="3.5 3.5 3.5"></a-entity>
+                    <a-entity gltf-model="#banca-derecha-edificio-glft"  position="10 0.5 -4" rotation="0 90 0" scale="3.5 3.5 3.5"></a-entity>
+                    <a-entity gltf-model="#banca-derecha-edificio-glft"  position="16 0.5 4" rotation="0 -90 0" scale="3.5 3.5 3.5"></a-entity>
+                    <a-entity gltf-model="#banca-derecha-edificio-glft"  position="16 0.5 -4" rotation="0 -90 0" scale="3.5 3.5 3.5"></a-entity>
+                    <a-entity gltf-model="#matera-glft"  position="10 0.8 9" rotation="0 -90 0" scale="0.3 0.3 0.3"></a-entity>
+                    <a-entity gltf-model="#matera-glft"  position="10 0.8 -9" rotation="0 -90 0" scale="0.3 0.3 0.3"></a-entity>
+                    <a-entity gltf-model="#matera-glft"  position="16 0.8 9" rotation="0 90 0" scale="0.3 0.3 0.3"></a-entity>
+                    <a-entity gltf-model="#matera-glft"  position="16 0.8 -9" rotation="0 90 0" scale="0.3 0.3 0.3"></a-entity> -->
+                  </a-entity>
+                  <a-entity id="izquierda">
+                    <a-entity gltf-model="#mesa-izquierda-edificio-glft"  position="-13 1.2 4" rotation="0 90 0" scale="0.7 0.7 0.7"></a-entity>
+                    <a-entity gltf-model="#mesa-izquierda-edificio-glft"  position="-13 1.2 -4" rotation="0 90 0" scale="0.7 0.7 0.7"></a-entity>
+                    <a-entity gltf-model="#sombrillas-izquierda-edificio-glft"  position="-13 0 -4" rotation="0 90 0" scale="2 2 2"></a-entity>
+                    <a-entity gltf-model="#sombrillas-izquierda-edificio-glft"  position="-13 0 4" rotation="0 90 0" scale="2 2 2"></a-entity>
+                  </a-entity>
+                  <a-entity id="derecha">
+                    <a-entity class="clickable" link-click="#" gltf-model="#f1car-glft"  position="13 0.8 3" rotation="0 0 0" scale="0.055 0.055 0.055"></a-entity>
+                    <a-image id="oracle-logo" rotation="0 90 0" position="8.6 20 0" width="15" height="9" src="#redbull-marketing" ></a-image>
+                  </a-entity>
+
+                  <a-entity id="posterior">
+                    <a-entity gltf-model="#fuente-entrada-glft"  position="12 0.4 32" rotation="0 -90 0" scale="1 1 1"></a-entity>
+                    <a-entity gltf-model="#fuente-entrada-glft"  position="-12 0.4 32" rotation="0 -90 0" scale="1 1 1"></a-entity>
+                    <a-entity gltf-model="#welcome-glft"  position="0 1 30" rotation="0 180 0" scale="0.01 0.01 0.01"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="8 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-8 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="6 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-6 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="4 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-4 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="1.5 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-1.5 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="10 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-10 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="12 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <a-entity gltf-model="#arbol-violeta-fuente-glft"  position="-12 0 37" rotation="0 -90 0" scale="0.8 0.8 0.8"></a-entity>
+                    <!-- mapa -->
+                    <a-image id="mapa-metaverso" rotation="-15 45 0" position="-8 3 14" width="5" height="3" src="#mapa-metaverso"></a-image>
+                    <a-box  color="#212121"  width="11" height="8.5" depth="0.019" scale="0.5 0.5 1.5" position="-8 2.8 14" rotation="-16 45 0" side="double"></a-box>
+                    <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="15 -1 15" rotation="0 -90 0" scale="4 4 4"></a-entity>
+                    <a-entity gltf-model="#farolas-esquinas-entrada-glft"  position="-15 -1 15" rotation="0 -90 0" scale="4 4 4"></a-entity>
+                    <a-entity id="jasmines"></a-entity>
+                  </a-entity>
               </a-entity>
 
             </a-entity>
@@ -255,7 +237,6 @@
             src="#oracle-ps"
             ></a-image>
             <!-- oracle welcome sign -->
-
             <a-image id="oracle-logo"
             rotation="0 180 0"
             position="0 3.5 31"
@@ -284,22 +265,6 @@
             depth="0.5"
             src="#texturatecho-parasol"
             ></a-box>
-
-           <!-- mapa -->
-
-           <a-image id="mapa-metaverso"
-           rotation="-15 45 0"
-           position="-8 3 14"
-           width="5"
-           height="3"
-           src="#mapa-metaverso"
-           ></a-image>
-              
-           <!-- Marco mapa metaverso -->
-           <a-box  color="#212121" 
-           width="11" height="8.5" depth="0.019" scale="0.5 0.5 1.5"
-           position="-8 2.8 14" rotation="-16 45 0" side="double">
-           </a-box>
 
             <a-cylinder id="stone"
             rotation="0 0 0"
@@ -362,13 +327,13 @@
       </div>
         <script defer type="module">
           import { build_enviroment } from "./assets/js/main.js";
-          // build_enviroment();
+          build_enviroment();
           window.onload = function() {
             document.getElementById('aframe-scene').style.display = 'block';
             setTimeout(function() {
               var logo = document.getElementById('logo-container');
               logo.style.display = 'none';
-            }, 3000);
+            }, 5000);
           }
         </script>	
   </body>

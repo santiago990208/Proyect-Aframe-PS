@@ -61,54 +61,18 @@ export class BuilderEnviroment {
     builder(){
         
         try {
-            // Build assets
-            // for (const asset in this.dictionary['assets']) {
-            //     // //console.log(asset);
-            //     var id = this.dictionary["assets"][asset]["id"]
-            //     var src = this.dictionary["assets"][asset]["src"]
-            //     var type = this.dictionary["assets"][asset]["type"]
-                
-            //     var new_asset = document.createElement(type); 
-            //     new_asset.setAttribute('id', id);
-            //     new_asset.setAttribute('src', src);
-            //     document.querySelector('#assets-galleries').appendChild(new_asset);
-            // }
-            // Get the userCamera element to append to
-            var userCamera = document.getElementById('userCamera');
 
-            // Create the camera rig element
-            var cameraRig = document.createElement('a-entity');
-            cameraRig.id = 'cameraRig';
-            cameraRig.setAttribute('wasd-controls', '');
-            cameraRig.setAttribute('look-controls', 'pointerLockEnabled: false');
-            cameraRig.setAttribute('simple-navmesh-constraint', 'navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;');
-            cameraRig.setAttribute('movement-controls', 'speed:0.5;camera:#head;');
-            cameraRig.setAttribute('position', '10 0.8 50');
-            cameraRig.setAttribute('rotation', '0 0 0');
+            //jasmines
+            var jasmines = document.getElementById('jasmines');
 
-            // Create the head element
-            var head = document.createElement('a-entity');
-            head.id = 'head';
-            head.setAttribute('camera', 'near:0.01;');
-            head.setAttribute('position', '0 2.65 0');
-
-            // Create the main cursor element
-            var mainCursor = document.createElement('a-cursor');
-            mainCursor.id = 'mainCursor';
-            mainCursor.setAttribute('position', '0 0 -0.5');
-            mainCursor.setAttribute('geometry', 'primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008');
-            mainCursor.setAttribute('material', 'opacity: 0.6; shader: flat');
-            mainCursor.setAttribute('cursor', 'rayOrigin: mouse');
-
-            // Append the main cursor to the head element
-            head.appendChild(mainCursor);
-
-            // Append the head to the camera rig element
-            cameraRig.appendChild(head);
-
-            // Append the camera rig to the userCamera
-            userCamera.appendChild(cameraRig);
-
+            for (var i = 17; i >= -17; i--) {
+                var jasmine = document.createElement('a-entity');
+                jasmine.id = 'cameraRig';
+                jasmine.innerHTML = ' <a-entity gltf-model="#jasmine-glft"  position="'+i+' -1 17.5" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>';
+                // Append the new element to the container
+                jasmines.appendChild(jasmine); 
+            }
+            
            
         } catch (error) {
           console.error("An error occurred while processing the API call: " + error);
