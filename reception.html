@@ -324,8 +324,8 @@
                   animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
 
                 <a-entity id="title_sr" geometry="primitive:plane; height:0.550; width:1.5"
-                              material="color:#FFC195" rotation="0 0 0"
-                              position="0  2.6 0.5" text="value:SR consults;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+                              material="color:#FFC8C8" rotation="0 0 0"
+                              position="0  1.8 2.2" text="value:SR consults;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
                 ></a-entity>
                 <!-- Mensaje popup -->
                 <a-entity id="popup_consulta1" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0.5" rotation="0 -90 0" scale="0 0 0">
@@ -385,8 +385,8 @@
                   <a-image id="continuar_map" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
                 </a-entity>  
                 <a-entity id="title_map" geometry="primitive:plane; height:0.750; width:1.5"
-                              material="color:#FFC195" rotation="0 180 0"
-                              position="0  2.6 -0.5" text="value:Incidents in my community;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+                              material="color:#FFC8C8" rotation="0 180 0"
+                              position="0  1.9 -2.2" text="value:Incidents in my community;wrapCount:14; align:center; width: 1.6; color: black; lineHeight:50;"
                 ></a-entity>
               </a-entity>
 
@@ -468,7 +468,10 @@
               <a-entity mixin="escritorio-recepcion" position="0 1.6 0" scale="0.06 0.06 0.06" rotation="0 0 0">
                   <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
               </a-entity>
-              <a-entity id="icono_centro_informacio" mixin="acceso" position="0 3.2 0" scale="1 1 1" rotation="0 90 0">
+              <a-entity id="icono_centro_informacio" mixin="acceso" position="-0.5 3.8 0" scale="1 1 1" rotation="0 90 0">
+                <a-entity id="title_login" geometry="primitive:plane; height:0.450; width:1.5" material="color:#FFC8C8" rotation="0 -90 0"
+                              position="-2 -1.65  0" text="value:Log in;wrapCount:12; align:center; width: 1.6; color: black; lineHeight:50;"
+                ></a-entity>
                 <a-entity id="centro_informacion_popup_acceso" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="-1 0 0" rotation="0 -90 0">
                     <a-image id="mensaje_acceso" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
                     <a-image id="continuar_acceso"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
@@ -480,9 +483,9 @@
             <!-- FAQ -->
             <a-entity id="guardia" gltf-model="#guardia-glb" position="5.3 0 15.5" scale="2 2 2" rotation="0 -45 0"></a-entity> 
         
-            <a-entity id="FAQ" scale="0 0 0"> 
+            <a-entity id="FAQ" scale="0 0 0" > 
                 <!-- Panel 1 -->
-                <a-entity id="Panel1" geometry="primitive:box; width:2.4; height:3; depth:0.1;" material="color:#FFD1A6;; transparent:true; opacity:0.1" rotation="0 -45 0"position="4.5 3 15.5">
+                <a-entity id="Panel1" geometry="primitive:box; width:2.4; height:3; depth:0.1;" material="color:#FFD1A6;; transparent:true; opacity:0.1" rotation="0 -30 0"position="4.5 3 15.5">
                   <a-image id="cerrar_FAQ" position="1.05 1.585 0.09" scale="1 1 1"  src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                   <!-- Pantalla 1 (FONDO)-->
                   <a-entity id="Pantalla1" geometry="primitive:box; width:2.5; height:3.35; depth:0.08;" material="color:#97C1FF" rotation="0 0 0" position="0 0.1 0.015">
@@ -574,7 +577,7 @@
                     scale="0.001 0.001 0.001"
                     text="value: On the 1st floor \n there are services that do not \n require registration. \n\n On the 2nd floor services \n require registration.; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08"  
-                >
+                  >
                     <a-image id="atras_R2" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
                   </a-entity>
                   <a-entity 
@@ -669,8 +672,8 @@
                     scale="0.001 0.001 0.001"
                     text="value: For personalised attention, \n you can call \n 046 435 \n or write to Whatsapp \n 945 234 234; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08" 
-                >
-                <a-image id="atras_R5" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
+                  >
+                  <a-image id="atras_R5" position="-0.9 -1.2 0.01" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
                   </a-entity>
 
                   <!-- Respuestas - Pantalla 2  -->
@@ -681,7 +684,7 @@
                     scale="0.001 0.001 0.001"
                     text="value: Go to the 1st floor \n  and select the documents \n totem; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08"  
-                >
+                  >
                     <a-image id="atras_R4_1" position="-0.9 -1.2 0.09" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
                   </a-entity>
                   <a-entity 
@@ -691,7 +694,7 @@
                     scale="0.001 0.001 0.001"
                     text="value: Go to the 2nd floor  \n  and select the departure \n totem; wrapCount:20; align:center; width: 1.6; color: black; lineHeight:60; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensanscondensed/OpenSansCondensed-Bold.json;"
                     position="0 0.1 0.08" 
-                >
+                  >
                   <a-image id="atras_R4_2" position="-0.9 -1.2 0.09" scale="0.122 0.25 0.25" src="#logo_atras" color="None" height="1.1" width="2.2" rotation="0 0 0" ></a-image>
                   </a-entity> 
 

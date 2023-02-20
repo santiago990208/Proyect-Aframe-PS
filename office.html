@@ -261,11 +261,15 @@
               </a-entity>
               <a-entity id="reportar_icono" gltf-model="#logo_reportar" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
                 animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
-              <a-entity id="popup_reportar" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+              <a-entity id="popup_reportar" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 2" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_reportar" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_reportar" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_reportar" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_reportar" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
               </a-entity>  
+              <a-entity id="title_report" geometry="primitive:plane; height:0.550; width:1.5"
+                              material="color:#FFC8C8" rotation="0 0 0" side="double"
+                              position="0  1.8 2" text="value:Report Incident ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+              ></a-entity>
             </a-entity>
 
             <a-entity id="counter_inspeccion" position="15 0 8" rotation="0 -90 0" >
@@ -274,11 +278,15 @@
               </a-entity>
               <a-entity id="inspeccion_icono" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
                 animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
-              <a-entity id="popup_inspeccion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+              <a-entity id="popup_inspeccion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 2" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_inspeccion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_inspeccion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
               </a-entity>  
+              <a-entity id="title_inspect" geometry="primitive:plane; height:0.550; width:1.8"
+                              material="color:#FFC8C8" rotation="0 0 0" side="double"
+                              position="0  1.8 2" text="value:Inspect debts and taxes ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+              ></a-entity>
             </a-entity>
 
             <a-entity id="counter_covid" position="-15 0 -8" rotation="0 90 0" >
@@ -287,11 +295,15 @@
               </a-entity>
               <a-entity id="covid_icono" gltf-model="#logo_covid" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
                 animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
-              <a-entity id="popup_covid" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+              <a-entity id="popup_covid" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 2" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_covid" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_covid" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_covid" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_covid" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
               </a-entity>  
+              <a-entity id="title_covid" geometry="primitive:plane; height:0.550; width:1.5"
+                              material="color:#FFC8C8" rotation="0 0 0" side="double"
+                              position="0  1.8 2" text="value:COVID triage;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+              ></a-entity>
             </a-entity>
 
             <a-entity id="counter_certificado" position="15 0 -8" rotation="0 -90 0" >
@@ -300,11 +312,15 @@
               </a-entity>
               <a-entity id="certificado_icono" gltf-model="#logo_certificado" rotation="0 0 0" position=" 0 5 0" scale="1.1 1.25 1.1" 
                 animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
-              <a-entity id="popup_certificado" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
+              <a-entity id="popup_certificado" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 2" rotation="0 -90 0" scale="0 0 0">
                 <a-image id="pop_certificado" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_certificado" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_certificado" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_certificado" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
               </a-entity>  
+              <a-entity id="title_certificate" geometry="primitive:plane; height:0.550; width:1.8"
+                              material="color:#FFC8C8" rotation="0 0 0" side="double"
+                              position="0  1.8 2" text="value:Birth certificate ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+              ></a-entity>
             </a-entity>
 
           </a-entity>
