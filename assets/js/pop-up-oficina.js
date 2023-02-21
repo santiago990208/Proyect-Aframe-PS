@@ -52,4 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
       popup_certificado.setAttribute('scale', '0 0 0');
     })
 
+
+    // Educacion
+    const closePopup_Education = document.querySelector('#cerrar_educacion');
+    const popup_Education = document.querySelector('#popup_educacion');
+    const information_Education = document.querySelector('#reportar_educacion');
+
+    if (information_Education) information_Education.addEventListener('click', function (e) {
+      popup_Education.setAttribute('scale', '1 1 1');
+      console.log('click');
+    })
+    
+    if (closePopup_Education) closePopup_Education.addEventListener('click', function (e) {
+      popup_Education.setAttribute('scale', '0 0 0');
+    })
+
   });
