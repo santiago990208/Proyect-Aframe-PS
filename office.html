@@ -61,6 +61,7 @@
               <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <img id="titles1" src="assets/images/ui/title1.png"  crossorigin="anonymous">
               <!-- information images -->
               <img id="texto_reportar" src="assets/images/information/Report.jpg" crossorigin="anonymous">
               <img id="texto_inspeccion" src="assets/images/information/Inspeccionar.jpg" crossorigin="anonymous">
@@ -266,10 +267,11 @@
                 <a-image id="cerrar_reportar" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_reportar" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
               </a-entity>  
-              <a-entity id="title_report" geometry="primitive:plane; height:0.550; width:1.5"
-                              material="color:#FFC8C8" rotation="0 0 0" side="double"
-                              position="0  1.8 2" text="value:Report Incident ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+
+              <a-entity id="title_report" geometry="primitive:plane; height:0.550; width:1.5" rotation="0 0 0"
+                              position="0  1.8 2" text="value:Report Incident;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:60;"
               ></a-entity>
+              <a-plane id="title_report_background" rotation="0 0 0" position="0 1.8 2" width="1.5" height="0.550"src="#titles1"  ></a-plane>
             </a-entity>
 
             <a-entity id="counter_inspeccion" position="15 0 8" rotation="0 -90 0" >
@@ -283,10 +285,11 @@
                 <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_inspeccion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
               </a-entity>  
-              <a-entity id="title_inspect" geometry="primitive:plane; height:0.550; width:1.8"
-                              material="color:#FFC8C8" rotation="0 0 0" side="double"
-                              position="0  1.8 2" text="value:Inspect debts and taxes ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+              
+              <a-entity id="title_inspect" geometry="primitive:plane; height:0.550; width:1.8" rotation="0 0 0"
+                              position="0  1.8 2" text="value:Inspect debts and taxes;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:40;"
               ></a-entity>
+              <a-plane id="title_inspect_background" rotation="0 0 0" position="0 1.8 2" width="1.8" height="0.550"src="#titles1"  ></a-plane>
             </a-entity>
 
             <a-entity id="counter_covid" position="-15 0 -8" rotation="0 90 0" >
@@ -300,10 +303,11 @@
                 <a-image id="cerrar_covid" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_covid" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
               </a-entity>  
-              <a-entity id="title_covid" geometry="primitive:plane; height:0.550; width:1.5"
-                              material="color:#FFC8C8" rotation="0 0 0" side="double"
-                              position="0  1.8 2" text="value:COVID triage;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+
+              <a-entity id="title_covid" geometry="primitive:plane; height:0.550; width:1.5" rotation="0 0 0"
+                              position="0  1.8 2" text="value:COVID triage;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:60;"
               ></a-entity>
+              <a-plane id="title_covid_background" rotation="0 0 0" position="0 1.8 2" width="1.5" height="0.550"src="#titles1"  ></a-plane>
             </a-entity>
 
             <a-entity id="counter_certificado" position="15 0 -8" rotation="0 -90 0" >
@@ -317,10 +321,11 @@
                 <a-image id="cerrar_certificado" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                 <a-image id="continuar_certificado" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
               </a-entity>  
-              <a-entity id="title_certificate" geometry="primitive:plane; height:0.550; width:1.8"
-                              material="color:#FFC8C8" rotation="0 0 0" side="double"
-                              position="0  1.8 2" text="value:Birth certificate ;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+
+              <a-entity id="title_certificate" geometry="primitive:plane; height:0.550; width:1.8" rotation="0 0 0"
+                              position="0  1.8 2" text="value:Birth certificate;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:60;"
               ></a-entity>
+              <a-plane id="title_certificate_background" rotation="0 0 0" position="0 1.8 2" width="1.8" height="0.550"src="#titles1"  ></a-plane>
             </a-entity>
 
           </a-entity>

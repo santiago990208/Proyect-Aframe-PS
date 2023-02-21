@@ -66,6 +66,7 @@
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
+              <img id="titles1" src="assets/images/ui/title1.png"  crossorigin="anonymous">
 
               <!-- information images -->
               <img id="centro_informacion_popup_mensaje" src="assets/images/information/centro-informacion-mensaje.png"  crossorigin="anonymous">
@@ -323,10 +324,11 @@
                 <a-entity id="logo_consulta1" gltf-model="#logo_inspeccion" rotation="0 0 0" position=" 0 5 0.5" scale="1.1 1.25 1.1" 
                   animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" ></a-entity>
 
-                <a-entity id="title_sr" geometry="primitive:plane; height:0.550; width:1.5"
-                              material="color:#FFC8C8" rotation="0 0 0"
-                              position="0  1.8 2.2" text="value:SR consults;wrapCount:15; align:center; width: 1.6; color: black; lineHeight:60;"
+                <a-entity id="title_sr" geometry="primitive:plane; height:0.550; width:1.5" rotation="0 0 0"
+                              position="0  1.8 2.2" text="value:SR consults;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:60;"
                 ></a-entity>
+                <a-plane id="title_sr_background" rotation="0 0 0" position="0 1.8 2.2" width="1.5" height="0.550"src="#titles1"  ></a-plane>
+                
                 <!-- Mensaje popup -->
                 <a-entity id="popup_consulta1" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="0 3 0.5" rotation="0 -90 0" scale="0 0 0">
                   <!-- Imagen de cerrar -->
@@ -384,10 +386,10 @@
                   <a-image id="cerrar_map" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
                   <a-image id="continuar_map" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="href: href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
                 </a-entity>  
-                <a-entity id="title_map" geometry="primitive:plane; height:0.750; width:1.5"
-                              material="color:#FFC8C8" rotation="0 180 0"
-                              position="0  1.9 -2.2" text="value:Incidents in my community;wrapCount:14; align:center; width: 1.6; color: black; lineHeight:50;"
+                <a-entity id="title_map" geometry="primitive:plane; height:0.750; width:1.5" rotation="0 180 0"
+                              position="0  1.9 -2.2" text="value:Incidents in my community;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:50;"
                 ></a-entity>
+                <a-plane id="title_map_background" rotation="0 180 0" position="0 1.9 -2.2" width="1.5" height="0.750"src="#titles1"  ></a-plane>
               </a-entity>
 
               
@@ -469,9 +471,12 @@
                   <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
               </a-entity>
               <a-entity id="icono_centro_informacio" mixin="acceso" position="-0.5 3.8 0" scale="1 1 1" rotation="0 90 0">
-                <a-entity id="title_login" geometry="primitive:plane; height:0.450; width:1.5" material="color:#FFC8C8" rotation="0 -90 0"
-                              position="-2 -1.65  0" text="value:Log in;wrapCount:12; align:center; width: 1.6; color: black; lineHeight:50;"
+
+                <a-entity id="title_login" geometry="primitive:plane; height:0.450; width:1.5" rotation="0 -90 0"
+                              position="-2 -1.65  0" text="value:Log in;wrapCount:12; align:center; width: 1.6; color: white; lineHeight:50;"
                 ></a-entity>
+              <a-plane id="title_login_background" rotation="0 -90 0" position="-2 -1.65  0" width="1.5" height="0.450"src="#titles1"  ></a-plane>
+
                 <a-entity id="centro_informacion_popup_acceso" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="-1 0 0" rotation="0 -90 0">
                     <a-image id="mensaje_acceso" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
                     <a-image id="continuar_acceso"  position="-0.1 -0.43 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" link-click="href:https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
