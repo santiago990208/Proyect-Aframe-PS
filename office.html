@@ -53,7 +53,7 @@
               <img id="texturatecho" src="assets/images/textures/techo.png"  crossorigin="anonymous"/>
               <img id="fondo-puerta" src="assets/images/textures/fondo-puerta.png"  crossorigin="anonymous"/>
               <img id="ventanas-laterales-oficina" src="assets/images/textures/ventana-office.png"  crossorigin="anonymous"/>
-              <img id="ventanas-posterior" src="assets/images/textures/exterior1.jpg"  crossorigin="anonymous"/>
+              <img id="ventanas-posterior" src="assets/images/textures/oracle-austin.jpg"  crossorigin="anonymous"/>
               <img id="marmol-negro-src" src="assets/images/textures/marmol-negro.jpg" />
               <img id="sofa-src" src="assets/images/textures/sofas.png"  crossorigin="anonymous"/>
               <img id="asensores" src="assets/images/textures/asesnsores.png"  crossorigin="anonymous"/>
@@ -66,6 +66,11 @@
               <img id="texto_inspeccion" src="assets/images/information/Inspeccionar.jpg" crossorigin="anonymous">
               <img id="texto_covid" src="assets/images/information/Covid.jpg" crossorigin="anonymous">
               <img id="texto_certificado" src="assets/images/information/Certificado.jpg" crossorigin="anonymous">
+              <img id="flyer-7" src="assets/images/information/flyer-7.png" crossorigin="anonymous">
+              <img id="flyer-8" src="assets/images/information/flyer-8.png" crossorigin="anonymous">
+              <img id="flyer-9" src="assets/images/information/flyer-9.png" crossorigin="anonymous">
+              <img id="flyer-10" src="assets/images/information/flyer-10.avif" crossorigin="anonymous">
+
 
               <a-asset-item id="logo_reportar" src="assets/objects/reportar.glb"></a-asset-item>
               <a-asset-item id="logo_inspeccion" src="assets/objects/inspeccion.glb"></a-asset-item>
@@ -175,10 +180,17 @@
 
             <a-plane id="ventana-posterior"
             rotation="-180 180 180"
-            position="0 8 -19.9"
+            position="0 10 -19.8"
             width="24"
             height="12"
             src="#ventanas-posterior"
+            ></a-plane>
+            <a-plane id="fondo-ventana-posterior"
+            rotation="-180 180 180"
+            position="0 10 -19.9"
+            width="24.5"
+            height="12.5"
+            color="green"
             ></a-plane>
             
             <a-plane id="pared-sur"
@@ -212,19 +224,33 @@
             height="40"
             src="#texturapared"
             ></a-plane>
-            <a-plane id="ventana-1-derecha"
+            <a-plane id="flyer-7-derecha"
             rotation="0 -90 0"
-            position="19.9 4 10"
-            width="8"
-            height="6"
-            src="#ventanas-laterales-oficina"
+            position="19.8 7 8"
+            width="15"
+            height="8"
+            src="#flyer-7"
             ></a-plane>
-            <a-plane id="ventana-2-derecha"
+            <a-plane id="fondo-flyer-7-derecha"
             rotation="0 -90 0"
-            position="19.9 4 -10"
-            width="8"
-            height="6"
-            src="#ventanas-laterales-oficina"
+            position="19.9 7 8"
+            width="15.5"
+            height="8.5"
+            color="grey"
+            ></a-plane>
+            <a-plane id="flyer-8-derecha"
+            rotation="0 -90 0"
+            position="19.8 7 -8"
+            width="10"
+            height="10"
+            src="#flyer-8"
+            ></a-plane>
+            <a-plane id="fondo-flyer-8-derecha"
+            rotation="0 -90 0"
+            position="19.9 7 -8"
+            width="10.5"
+            height="10.5"
+            color="grey"
             ></a-plane>
           
             <a-plane id="pared-izquierda"
@@ -234,19 +260,33 @@
             height="40"
             src="#texturapared"
             ></a-plane>
-            <a-plane id="ventana-1-izquierda"
+            <a-plane id="flyer-9-izquierda"
             rotation="0 90 0"
-            position="-19.9 4 10"
-            width="8"
-            height="6"
-            src="#ventanas-laterales-oficina"
+            position="-19.8 7 8"
+            width="15"
+            height="8"
+            src="#flyer-9"
             ></a-plane>
-            <a-plane id="ventana-2-izquierda"
+            <a-plane id="fondo-flyer-9-derecha"
             rotation="0 90 0"
-            position="-19.9 4 -10"
-            width="8"
-            height="6"
-            src="#ventanas-laterales-oficina"
+            position="-19.9 7 8"
+            width="15.5"
+            height="8.5"
+            color="grey"
+            ></a-plane>
+            <a-plane id="flyer-10-izquierda"
+            rotation="0 90 0"
+            position="-19.8 7 -8"
+            width="10"
+            height="10"
+            src="#flyer-10"
+            ></a-plane>
+            <a-plane id="fondo-flyer-10-derecha"
+            rotation="0 90 0"
+            position="-19.9 7 -8"
+            width="10.5"
+            height="10.5"
+            color="grey"
             ></a-plane>
 
             <a-entity id="recepcion_informacion" position="0 0 -15">

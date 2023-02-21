@@ -68,13 +68,16 @@
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
-              <img id="monaco-f1" src="assets/images/ui/monaco-f1.png"  crossorigin="anonymous">
 
               <!-- information images -->
               <img id="centro_informacion_popup_mensaje" src="assets/images/information/centro-informacion-mensaje.png.jpg"  crossorigin="anonymous">
               <img id="informacion_acceso_popup_mensaje" src="assets/images/information/informacion-acceso-mensaje.png"  crossorigin="anonymous">
               <img id="flyer-1" src="assets/images/information/flyer-1.jpg"  crossorigin="anonymous">
               <img id="flyer-2" src="assets/images/information/flyer-2.png"  crossorigin="anonymous">
+              <img id="flyer-3" src="assets/images/information/flyer-3.jpg"  crossorigin="anonymous">
+              <img id="flyer-4" src="assets/images/information/flyer-4.png"  crossorigin="anonymous">
+              <img id="flyer-5" src="assets/images/information/flyer-5.png"  crossorigin="anonymous">
+              <img id="flyer-6" src="assets/images/information/flyer-6.png"  crossorigin="anonymous">
               <img id="poster-frontera" src="assets/images/information/frontera-poster.png"  crossorigin="anonymous">
               <img id="texto_inspeccion" src="assets/images/information/Inspeccionar.jpg" crossorigin="anonymous">
 
@@ -268,19 +271,33 @@
             
             <a-plane id="poster-derecha"
             rotation="0 180 0"
-            position="12 6 19.9"
+            position="12 6 19.8"
             width="10"
             height="6"
             depth="1"
             src="#flyer-1"
             ></a-plane>
+            <a-plane id="fondo-flyer-derecha"
+            rotation="0 180 0"
+            position="12 6 19.9"
+            width="10.5"
+            height="6.5"
+            color="grey"
+            ></a-plane>
 
             <a-plane id="poster-izquierdo"
             rotation="0 180 0"
-            position="-12 6 19.9"
+            position="-12 6 19.8"
             width="10"
             height="8"
             src="#flyer-2"
+            ></a-plane>
+            <a-plane id="fondo-flyer-derecha"
+            rotation="0 180 0"
+            position="-12 6 19.9"
+            width="10.5"
+            height="8.5"
+            color="red"
             ></a-plane>
 
             <a-plane id="red-decoration-right-wall"
@@ -288,7 +305,7 @@
             position="19.8 17.5 0"
             width="40"
             height="1"
-            color="red"
+            color="grey"
             opacity="10"
             ></a-plane>
 
@@ -299,19 +316,33 @@
             height="40"
             src="#walltexture"
             ></a-plane>
-            <a-plane id="ventana-1-derecha"
+            <a-plane id="flyer-3-derecha"
             rotation="0 -90 0"
-            position="19.9 4 10"
-            width="6"
-            height="6"
-            src="#ventana-recepcion"
+            position="19.8 7 12"
+            width="10"
+            height="10"
+            src="#flyer-3"
             ></a-plane>
-            <a-plane id="ventana-2-derecha"
+            <a-plane id="fondo-flyer-3-derecha"
             rotation="0 -90 0"
-            position="19.9 4 -10"
-            width="6"
-            height="6"
-            src="#ventana-recepcion"
+            position="19.9 7 12"
+            width="10.5"
+            height="10.5"
+            color="grey"
+            ></a-plane>
+            <a-plane id="flyer-4-derecha"
+            rotation="0 -90 0"
+            position="19.8 7 -12"
+            width="10"
+            height="10"
+            src="#flyer-4"
+            ></a-plane>
+            <a-plane id="fondo-flyer-4-derecha"
+            rotation="0 -90 0"
+            position="19.9 7 -12"
+            width="10.5"
+            height="10.5"
+            color="grey"
             ></a-plane>
 
             <a-plane id="red-decoration-left-wall"
@@ -330,19 +361,33 @@
             height="40"
             src="#walltexture"
             ></a-plane>
-            <a-plane id="ventana-1-izquierda"
+            <a-plane id="flyer-5-izquierda"
             rotation="0 90 0"
-            position="-19.9 4 10"
-            width="6"
-            height="6"
-            src="#ventana-recepcion"
+            position="-19.8 7 12"
+            width="10"
+            height="10"
+            src="#flyer-5"
             ></a-plane>
-            <a-plane id="ventana-2-izquierda"
+            <a-plane id="fondo-flyer-5-derecha"
             rotation="0 90 0"
-            position="-19.9 4 -10"
-            width="6"
-            height="6"
-            src="#ventana-recepcion"
+            position="-19.9 7 12"
+            width="10.5"
+            height="10.5"
+            color="grey"
+            ></a-plane>
+            <a-plane id="flyer-6-izquierda"
+            rotation="0 90 0"
+            position="-19.8 7 -12"
+            width="10"
+            height="10"
+            src="#flyer-6"
+            ></a-plane>
+            <a-plane id="fondo-flyer-6-derecha"
+            rotation="0 90 0"
+            position="-19.9 7 -12"
+            width="10.5"
+            height="10.5"
+            color="grey"
             ></a-plane>
 
             <a-entity id="totem" position="0 0 15">
