@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
 
-    // Educacion
+    // Education
     const closePopup_Education = document.querySelector('#cerrar_educacion');
     const popup_Education = document.querySelector('#popup_educacion');
     const information_Education = document.querySelector('#reportar_educacion');
