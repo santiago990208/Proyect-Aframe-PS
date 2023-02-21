@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(url)
         
         var username = 'John.Dunbar';
-        var password = 'gTr5I#9^';
+        var password = 'wRy3w^8*';
 
 		const build_world = new BuilderAPI(url, username, password);
   		build_world.api_call();

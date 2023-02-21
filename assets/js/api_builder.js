@@ -17,7 +17,7 @@ class BuilderAPI {
           headers: {
             'Authorization': authorization,
             'Content-Type': 'application/json',
-            'Host': host
+            'Host': host,
           }
         })
         .then(response => {
