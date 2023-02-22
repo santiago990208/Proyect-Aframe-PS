@@ -141,9 +141,18 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
 });
 AFRAME.registerComponent("link-click", {
     init: function() {
-        this.el.addEventListener("click", (e) => {
-            console.log(this.data);
-            location.href=this.data;
+        this.el.addEventListener('click', function (evt) { 
+            console.log(this.getAttribute('link-click'));
+            var elClass = this.getAttribute('class');
+            if(elClass == 'clickable'){
+              console.log("click out");
+              console.log(this.getAttribute('link-click'));
+              // window.open(this.getAttribute('link-click'), '_blank');
+            }else{
+              console.log("click in");
+              console.log(this.getAttribute('link-click'));
+              // location.href = this.getAttribute('link-click');
+            }
         });
         this.el.addEventListener('mouseenter', function (evt) { 
             console.log("mouseenter");

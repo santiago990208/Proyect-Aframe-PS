@@ -9,7 +9,7 @@
         <meta name="author" content="Santiago Botero">
         <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-        
+        <script src="assets/js/pop-up-oficina.js"></script>
     </head>
     <body>
       <div id="logo-container">
@@ -33,7 +33,7 @@
               <a-mixin id="handle-visual" geometry="width:0.05;height:0.05;depth:0.2"></a-mixin>
       
               <!-- Textures -->
-              <img id="texturapiso" src="assets/images/textures/piso.png"  crossorigin="anonymous"/>
+              <img id="texturapiso" src="assets/images/textures/floor.jpg"  crossorigin="anonymous"/>
               <img id="texturapared" src="assets/images/textures/wall.jpg"  crossorigin="anonymous"/>
               <img id="texturatecho" src="assets/images/textures/techo.png"  crossorigin="anonymous"/>
               <img id="fondo-puerta" src="assets/images/textures/fondo-puerta.png"  crossorigin="anonymous"/>
@@ -43,7 +43,7 @@
               <img id="sofa-src" src="assets/images/textures/sofas.png"  crossorigin="anonymous"/>
               <img id="asensores" src="assets/images/textures/asesnsores.png"  crossorigin="anonymous"/>
               <!-- UI -->
-              <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.png"  crossorigin="anonymous"/>
+              <!-- <img id="escudo-colombia" src="assets/images/ui/escudo-colombia.jpg"  crossorigin="anonymous"/> -->
               <img id="boton-continuar" src="assets/images/ui/boton-continuar.png"  crossorigin="anonymous">
               <img id="boton-cerrar" src="assets/images/ui/boton-cerrar.png"  crossorigin="anonymous">
               <img id="titles1" src="assets/images/ui/title1.png"  crossorigin="anonymous">
@@ -197,7 +197,7 @@
             width="8"
             height="7"
             src="#asensores"
-            link-click=" reception.html"
+            link-click="reception.html"
             ></a-plane>
             <a-plane id="asensor-2"
             rotation="0 180 0"
@@ -205,7 +205,7 @@
             width="8"
             height="7"
             src="#asensores"
-            link-click=" reception.html"
+            link-click="reception.html"
             ></a-plane>
             
             <a-plane id="pared-derecha"
@@ -288,7 +288,7 @@
                   <a-entity id="popup_educacion" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1.35 3 0.8" rotation="0 -90 0" scale="0 0 0">
                     <a-image id="pop_educacion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_educacion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                     <a-image id="cerrar_educacion" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                    <a-image id="continuar_educacion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="  https://www.oracle.com/pe/education/oracle-next-education/" ></a-image>
+                    <a-image id="continuar_educacion" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="https://www.oracle.com/pe/education/oracle-next-education/" ></a-image>
                   </a-entity>
 
                   <a-entity id="title_education" geometry="primitive:plane; height:0.550; width:1.5" rotation="0 0 0"
@@ -307,7 +307,7 @@
                 <a-image id="pop_reportar" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_reportar" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_reportar" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
 
-                <a-image id="continuar_reportar" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="  https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
+                <a-image id="continuar_reportar" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_REPORT_AN_ISSUE" ></a-image>
 
               </a-entity>  
 
@@ -327,7 +327,7 @@
                 <a-image id="pop_inspeccion" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_inspeccion" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
 
-                <a-image id="continuar_inspeccion" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="  href: https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
+                <a-image id="continuar_inspeccion" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" class="clickable"  link-click="https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
 
               </a-entity>  
               
@@ -347,7 +347,7 @@
                 <a-image id="pop_covid" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_covid" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_covid" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
 
-                <a-image id="continuar_covid" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="  href: https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
+                <a-image id="continuar_covid" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" class="clickable"  link-click="https://buenosaires-opa.rightnowdemo.com/owda/3/investigate/Covid-19%20v4/es-ES/ScreenOrder~Main~qs%244bd85b5e-fd90-4e40-84d9-408c314a8cbf%24global%24global"></a-image>
 
               </a-entity>  
 
@@ -367,7 +367,7 @@
                 <a-image id="pop_certificado" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_certificado" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                 <a-image id="cerrar_certificado" position="0.01 0.78 -2.78" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
 
-                <a-image id="continuar_certificado" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" link-click="  href: https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
+                <a-image id="continuar_certificado" position="0.1 -0.2 -1.4" scale="0.15 0.15 0.18" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" class="clickable"  link-click="https://gseopa00090.rightnowdemo.com/owda/0/investigate/TT/pt-BR/ScreenOrder~Main~qs%2445658bd8-b2b2-4d4f-b616-2c50a1cbb5da%24global%24global" ></a-image>
 
               </a-entity>  
 
