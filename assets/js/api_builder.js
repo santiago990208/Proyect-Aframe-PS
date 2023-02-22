@@ -33,6 +33,8 @@ class BuilderAPI {
                 textarea.setAttribute('text', 'value: ' + 'THERE IS NOT SR WITH THAT ID'+text_design);
                 
                 document.querySelector('#api_respond_info').appendChild(textarea);
+                var consult = document.querySelector('#consult_button');
+                consult.setAttribute('text','value:Consult;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;');
                 throw new Error(response.statusText);
             }
             return response.json();
@@ -61,6 +63,8 @@ class BuilderAPI {
             textarea.setAttribute('text', 'value: ' + 'There is an error'+text_design);
             
             document.querySelector('#api_respond_info').appendChild(textarea);
+            var consult = document.querySelector('#consult_button');
+            consult.setAttribute('text','value:Consult;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;');
         })
 
         
@@ -82,6 +86,8 @@ class BuilderAPI {
             textarea.setAttribute('text', 'value: ' + value + text_design);
             
             document.querySelector('#api_respond_info').appendChild(textarea);
+            var consult = document.querySelector('#consult_button');
+            consult.setAttribute('text','value:Consult;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;');
           
           } catch (error) {
             console.error("An error occurred while processing the API call: " + error);

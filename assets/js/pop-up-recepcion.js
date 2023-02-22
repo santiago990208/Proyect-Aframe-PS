@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 code+=value[i]
             }
         }
+        consult.setAttribute('text', 'value:Charging;wrapCount:18; align:center; width: 1.6; color: black; lineHeight:60;');
         
         console.log(code);
 

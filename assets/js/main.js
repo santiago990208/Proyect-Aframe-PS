@@ -3,7 +3,7 @@ import { BuilderEnviroment } from "./builders/enviroment.js";//assets\js\builder
 /* Counstructor integrator of clases */
 export function build_enviroment () {
 
-    console.log('hello')
+    // console.log('hello')
     var username = '';
     var password = '';
     // BUILDER ROOM
@@ -142,23 +142,19 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
 AFRAME.registerComponent("link-click", {
     init: function() {
         this.el.addEventListener('click', function (evt) { 
-            console.log(this.getAttribute('link-click'));
             var elClass = this.getAttribute('class');
-            if(elClass == 'clickable'){
-              console.log("click out");
-              console.log(this.getAttribute('link-click'));
-              // window.open(this.getAttribute('link-click'), '_blank');
+            if(elClass == 'windowsoutclick'){
+              window.open(this.getAttribute('link-click').https, '_blank');
             }else{
-              console.log("click in");
-              console.log(this.getAttribute('link-click'));
-              // location.href = this.getAttribute('link-click');
+              location.href = this.getAttribute('link-click');
             }
         });
         this.el.addEventListener('mouseenter', function (evt) { 
-            console.log("mouseenter");
           var elClass = this.getAttribute('class');
-          if(elClass == 'clickable'){
+          if(elClass == 'windowsoutclick'){
             document.querySelector('#mainCursor').setAttribute('material', 'color', 'red');
+          }else if(elClass == 'windowsinclick'){
+            document.querySelector('#mainCursor').setAttribute('material', 'color', 'cyan');
           }
         });
         this.el.addEventListener('mouseleave', function (evt) {

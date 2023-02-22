@@ -167,7 +167,7 @@
                     <a-entity gltf-model="#sombrillas-izquierda-edificio-glft"  position="-13 0 4" rotation="0 90 0" scale="2 2 2"></a-entity>
                   </a-entity>
                   <a-entity id="derecha">
-                    <a-entity class="clickable" link-click="#" gltf-model="#f1car-glft"  position="13 0.8 3" rotation="0 0 0" scale="0.055 0.055 0.055"></a-entity>
+                    <a-entity gltf-model="#f1car-glft"  position="13 0.8 3" rotation="0 0 0" scale="0.055 0.055 0.055"></a-entity>
                     <a-image id="oracle-logo" rotation="0 90 0" position="8.6 20 0" width="15" height="9" src="#redbull-marketing" ></a-image>
                   </a-entity>
 
@@ -216,14 +216,14 @@
                 <a-plane rotation="-90 0 0" width="17.5" height="17.5" position="0 -10 0" class="navmesh-hole" visible="false"></a-plane>
             </a-box>
 
-            <a-entity link-click="reception.html" mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
+            <a-entity class="windowsinclick" link-click="reception.html" mixin="puerta-entrada" position="0 4 8.5" rotation="0 -90 0" scale="4 4 3" ></a-entity>
             <a-plane id="puerta"
             rotation="-180 180 180"
             position="0 3 8.6"
             width="4"
             height="8"
             src="#inside-reception"
-            link-click="reception.html"
+            class="windowsinclick" link-click="reception.html"
             ></a-plane>
 
             <!-- oracle public sector sign -->
@@ -327,6 +327,16 @@
           import { build_enviroment } from "./assets/js/main.js";
           build_enviroment();
           window.onload = function() {
+            var maincursor = document.getElementById('mainCursor');
+          console.log(maincursor);
+          
+          setTimeout(function() {
+            while (!maincursor){
+            setTimeout(function() {
+              location.reload();
+            }, 1000);
+          }
+          }, 3000);
             document.getElementById('aframe-scene').style.display = 'block';
             setTimeout(function() {
               var logo = document.getElementById('logo-container');

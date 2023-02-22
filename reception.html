@@ -11,6 +11,7 @@
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script> <!-- libreria para radio button funcione -->
         <script src="assets/js/pop-up-recepcion.js"></script>
+        <script src="assets/js/api_builder.js"></script>
         <script src="assets/js/FAQ-funciones.js"></script>
 
     </head>
@@ -215,7 +216,7 @@
             width="6"
             height="7"
             src="#asensores"
-            link-click="office.html"
+            class="windowsinclick" link-click="office.html"
             ></a-plane>
 
             <a-plane id="asensor-2"
@@ -224,7 +225,7 @@
             width="6"
             height="7"
             src="#asensores"
-            link-click="office.html"
+            class="windowsinclick" link-click="office.html"
             ></a-plane>
 
             <a-plane id="red-decoration-south-wall"
@@ -243,7 +244,7 @@
             height="40"
             src="#walltexture"
             ></a-plane>
-            <a-entity mixin="puerta-entrada" position="0 4 19.9" rotation="0 -90 0" scale="5 5 4" link-click="index.html">
+            <a-entity mixin="puerta-entrada" position="0 4 19.9" rotation="0 -90 0" scale="5 5 4" class="windowsinclick" link-click="index.html">
               <a-plane rotation="-90 0 0" width="5" height="5" position="0 -1 0" class="navmesh-hole" visible="false"></a-plane>
             </a-entity>
           
@@ -453,11 +454,11 @@
                     <a-plane rotation="-90 0 0" width="5" height="5" position="0 -0.1 0" class="navmesh-hole" visible="false"></a-plane>
                 </a-entity>
                 <a-entity id="logo_map" gltf-model="#logo_map" rotation="0 0 0" position=" 0 5 -0.5" scale="1.1 1.25 1.1" 
-                  animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" class="clickable"  link-click="https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-entity>
+                  animation="property: rotation;from : 0 90 0; to: 0 450 0; loop: true;easing: linear; dur: 100000" class="windowsoutclick"  link-click="https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_GIS_MAP"></a-entity>
                 <a-entity id="popup_map" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0"  position="-1 3 1" rotation="0 -90 0" scale="0 0 0">
                   <a-image id="pop_map" position="0 0.2 -1.4" scale="1.4 1.4 1" src="#texto_inspeccion" color="None" height="1.1" width="2.2" rotation="0 90 0" ></a-image>
                   <a-image id="cerrar_map" position="0.01 0.78 -2.8" scale="1.2 1.2 1" rotation="0 90 0" src="#boton-cerrar" color="None" width="0.2" height="0.2"></a-image>
-                  <a-image id="continuar_map" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" class="clickable"  link-click=" https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
+                  <a-image id="continuar_map" position="0.1 -0.38 -1.4" scale="0.35 0.35 0.38" src="#boton-continuar" color="None" height="1.1" width="2.2" rotation="0 90 0" class="windowsoutclick"  link-click=" https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSCHM_MY_INSPECTION" ></a-image>
                 </a-entity>  
                 <a-entity id="title_map" geometry="primitive:plane; height:0.750; width:1.5" rotation="0 180 0"
                               position="0  1.9 -2.2" text="value:Incidents in my community;wrapCount:15; align:center; width: 1.6; color: white; lineHeight:50;"
@@ -553,7 +554,7 @@
                 <a-entity id="centro_informacion_popup_acceso" geometry="primitive:plane; height:2; width:1.8" material="color:white; opacity:0" scale="0 0 0" position="-1 0 0" rotation="0 -90 0">
                     <a-image id="mensaje_acceso" src="#centro_informacion_popup_mensaje"  height="1.5" width="2.3" ></a-image>
 
-                    <a-image id="continuar_acceso"  position="0 -0.5 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" class="clickable"  link-click=" https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
+                    <a-image id="continuar_acceso"  position="0 -0.5 0.01" scale="1.8 0.9 0"src="#boton-continuar"  width="0.2" height="0.2" class="windowsoutclick"  link-click=" https://fa-eqkj-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/publicSector.html?root=PSC_SECURL_LANDINGPAGE"></a-image>
                     <a-image id="cerrar_centro_informacion" position="0.94 0.52 0.01" scale="0.7 0.7 0.7" src="#boton-cerrar"  width="0.2" height="0.2" ></a-image>
 
                 </a-entity>
@@ -790,6 +791,17 @@
         import { build_enviroment } from "./assets/js/main.js";
         // build_enviroment();
         window.onload = function() {
+          var maincursor = document.getElementById('mainCursor');
+          console.log(maincursor);
+          
+          setTimeout(function() {
+            while (!maincursor){
+            setTimeout(function() {
+              location.reload();
+            }, 1000);
+          }
+          }, 3000);
+
           document.getElementById('aframe-scene').style.display = 'block';
           setTimeout(function() {
             var logo = document.getElementById('logo-container');
