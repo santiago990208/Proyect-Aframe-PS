@@ -109,24 +109,6 @@
           </a-assets>
           <!-- Luz-->
           <a-light id="dirlight" intensity="2" light="castShadow:false;type:hemisphere" position="0 -6 0"></a-light>
-          <!-- Camera -->
-          <a-entity id="cameraRig"
-            wasd-controls
-            look-controls="pointerLockEnabled: false"
-            simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
-            movement-controls="speed:0.5;camera:#head;"
-            position="0 0.8 19" rotation="0 0 0" >
-            <a-entity id="head"
-              camera="near:0.01;"
-              position="0 2.65 0">
-              <a-cursor id="mainCursor" 
-                position="0 0 -0.5"
-                geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
-                material="opacity: 0.6; shader: flat" 
-                cursor="rayOrigin: mouse">
-              </a-cursor>
-            </a-entity>
-          </a-entity>
           
           <!-- Hand tracking -->
           <a-entity handy-controls="right:#right-gltf;materialOverride:right;" material="color:gold;metalness:1;roughness:0;">
@@ -783,7 +765,24 @@
                 </a-entity>
             </a-entity>
 
-
+          </a-entity>
+          <!-- Camera -->
+          <a-entity id="cameraRig"
+            wasd-controls
+            look-controls="pointerLockEnabled: false"
+            simple-navmesh-constraint="navmesh:.navmesh;fall:0.5;height:0.8;exclude:.navmesh-hole;"
+            movement-controls="speed:0.5;camera:#head;"
+            position="0 0.8 19" rotation="0 0 0" >
+            <a-entity id="head"
+              camera="near:0.01;"
+              position="0 2.65 0">
+              <a-cursor id="mainCursor" 
+                position="0 0 -0.5"
+                geometry="primitive: ring; radiusInner: 0.0045; radiusOuter: 0.008"
+                material="opacity: 0.6; shader: flat" 
+                cursor="rayOrigin: fuse">
+              </a-cursor>
+            </a-entity>
           </a-entity>
         </a-scene>
       </div>
