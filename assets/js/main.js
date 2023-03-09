@@ -155,6 +155,8 @@ AFRAME.registerComponent("link-click", {
             document.querySelector('#mainCursor').setAttribute('material', 'color', 'red');
           }else if(elClass == 'windowsinclick'){
             document.querySelector('#mainCursor').setAttribute('material', 'color', 'cyan');
+          }else if(elClass == 'windowsmicro'){
+            document.querySelector('#mainCursor').setAttribute('material', 'color', 'green');
           }
         });
         this.el.addEventListener('mouseleave', function (evt) {
